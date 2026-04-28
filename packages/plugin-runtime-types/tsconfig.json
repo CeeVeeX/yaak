@@ -6,6 +6,7 @@
     "declaration": true,
     "declarationDir": "./lib",
     "outDir": "./lib",
+    "rootDir": "./src",
     "strict": true,
     "types": ["node"]
   },
