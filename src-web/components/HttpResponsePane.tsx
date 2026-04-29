@@ -86,27 +86,27 @@ export function HttpResponsePane({ style, className, activeRequestId }: Props) {
     () => [
       {
         value: TAB_BODY,
-        label: "Response",
+        label: "响应",
         options: {
           value: viewMode,
           onChange: setViewMode,
           items: [
-            { label: "Response", value: "pretty" },
+            { label: "响应", value: "pretty" },
             ...(mimeType?.startsWith("image")
               ? []
-              : [{ label: "Response (Raw)", shortLabel: "Raw", value: "raw" }]),
+              : [{ label: "响应（原始）", shortLabel: "原始", value: "raw" }]),
           ],
         },
       },
       {
         value: TAB_REQUEST,
-        label: "Request",
+        label: "请求",
         rightSlot:
           (activeResponse?.requestContentLength ?? 0) > 0 ? <CountBadge count={true} /> : null,
       },
       {
         value: TAB_HEADERS,
-        label: "Headers",
+        label: "请求头",
         rightSlot: (
           <CountBadge
             count={activeResponse?.requestHeaders.length ?? 0}
@@ -117,7 +117,7 @@ export function HttpResponsePane({ style, className, activeRequestId }: Props) {
       },
       {
         value: TAB_COOKIES,
-        label: "Cookies",
+        label: "Cookie",
         rightSlot:
           cookieCounts.sent > 0 || cookieCounts.received > 0 ? (
             <CountBadge count={cookieCounts.sent} count2={cookieCounts.received} showZero />
@@ -130,8 +130,8 @@ export function HttpResponsePane({ style, className, activeRequestId }: Props) {
           value: timelineViewMode,
           onChange: (v) => setTimelineViewMode((v as TimelineViewMode) ?? "timeline"),
           items: [
-            { label: "Timeline", value: "timeline" },
-            { label: "Timeline (Text)", shortLabel: "Timeline", value: "text" },
+            { label: "时间线", value: "timeline" },
+            { label: "时间线（文本）", shortLabel: "时间线", value: "text" },
           ],
         },
       },
@@ -200,26 +200,24 @@ export function HttpResponsePane({ style, className, activeRequestId }: Props) {
                     className="my-auto pl-3 flex-shrink-0 max-w-full justify-self-end overflow-hidden"
                     content={
                       <VStack alignItems="start" space={1} className="text-xs">
-                        <span className="font-medium text-warning">
-                          Redirect changed this request
-                        </span>
+                        <span className="font-medium text-warning">重定向修改了该请求</span>
                         {redirectDropWarning.droppedBodyCount > 0 && (
                           <span>
-                            Body dropped on {redirectDropWarning.droppedBodyCount}{" "}
+                            请求体在 {redirectDropWarning.droppedBodyCount} 次{" "}
                             {redirectDropWarning.droppedBodyCount === 1
-                              ? "redirect hop"
-                              : "redirect hops"}
+                              ? "重定向跳转中被丢弃"
+                              : "重定向跳转中被丢弃"}
                           </span>
                         )}
                         {redirectDropWarning.droppedHeaders.length > 0 && (
                           <span>
-                            Headers dropped:{" "}
+                            被丢弃的请求头：{" "}
                             <span className="font-mono">
                               {redirectDropWarning.droppedHeaders.join(", ")}
                             </span>
                           </span>
                         )}
-                        <span className="text-text-subtle">See Timeline for details.</span>
+                        <span className="text-text-subtle">详见时间线。</span>
                       </VStack>
                     }
                   >
@@ -259,7 +257,7 @@ export function HttpResponsePane({ style, className, activeRequestId }: Props) {
             {/* Show tabs if we have any data (headers, body, etc.) even if there's an error */}
             <Tabs
               tabs={tabs}
-              label="Response"
+              label="响应"
               className="ml-3 mr-3 mb-3 min-h-0 flex-1"
               tabListClassName="mt-0.5 -mb-1.5"
               storageKey="http_response_tabs"
@@ -274,16 +272,16 @@ export function HttpResponsePane({ style, className, activeRequestId }: Props) {
                           <VStack space={3}>
                             <HStack space={3}>
                               <LoadingIcon className="text-text-subtlest" />
-                              Sending Request
+                              正在发送请求
                             </HStack>
                             <Button size="sm" variant="border" onClick={() => cancel.mutate()}>
-                              Cancel
+                              取消
                             </Button>
                           </VStack>
                         </EmptyStateText>
                       ) : activeResponse.state === "closed" &&
                         (activeResponse.contentLength ?? 0) === 0 ? (
-                        <EmptyStateText>Empty</EmptyStateText>
+                        <EmptyStateText>空响应</EmptyStateText>
                       ) : mimeType?.match(/^text\/event-stream/i) && viewMode === "pretty" ? (
                         <EventStreamViewer response={activeResponse} />
                       ) : mimeType?.match(/^image\/svg/) ? (
@@ -373,12 +371,12 @@ function pushHeaderName(headers: Set<string>, headerName: string): void {
 
 function getRedirectWarningLabel(warning: RedirectDropWarning): string {
   if (warning.droppedBodyCount > 0 && warning.droppedHeaders.length > 0) {
-    return "Dropped body and headers";
+    return "请求体和请求头已丢弃";
   }
   if (warning.droppedBodyCount > 0) {
-    return "Dropped body";
+    return "请求体已丢弃";
   }
-  return "Dropped headers";
+  return "请求头已丢弃";
 }
 
 function EnsureCompleteResponse({
@@ -389,7 +387,7 @@ function EnsureCompleteResponse({
   Component: ComponentType<{ bodyPath: string }>;
 }) {
   if (response.bodyPath === null) {
-    return <div>Empty response body</div>;
+    return <div>响应体为空</div>;
   }
 
   // Wait until the response has been fully-downloaded

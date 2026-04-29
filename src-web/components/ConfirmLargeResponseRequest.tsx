@@ -31,15 +31,15 @@ export function ConfirmLargeResponseRequest({ children, response }: Props) {
     return (
       <Banner color="primary" className="flex flex-col gap-3">
         <p>
-          Showing content over{" "}
+          显示超过{" "}
           <InlineCode>
             <SizeTag contentLength={LARGE_BYTES} />
           </InlineCode>{" "}
-          may impact performance
+          的内容可能影响性能
         </p>
         <HStack wrap space={2}>
           <Button color="primary" size="xs" onClick={toggleShowLargeResponse}>
-            Reveal Request Body
+            显示请求体
           </Button>
           {isProbablyText && (
             <CopyButton

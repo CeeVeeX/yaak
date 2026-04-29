@@ -33,18 +33,18 @@ export function ConfirmLargeResponse({ children, response }: Props) {
     return (
       <Banner color="primary" className="flex flex-col gap-3">
         <p>
-          Showing responses over{" "}
+          显示超过{" "}
           <InlineCode>
             <SizeTag contentLength={LARGE_BYTES} />
           </InlineCode>{" "}
-          may impact performance
+          的响应可能影响性能
         </p>
         <HStack wrap space={2}>
           <Button color="primary" size="xs" onClick={toggleShowLargeResponse}>
-            Reveal Response
+            显示响应
           </Button>
           <Button color="secondary" variant="border" size="xs" onClick={() => saveResponse()}>
-            Save to File
+            保存到文件
           </Button>
           {isProbablyText && (
             <CopyButton

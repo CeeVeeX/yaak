@@ -27,7 +27,7 @@ export function useAuthTab<T extends string>(tabValue: T, model: AuthenticatedMo
 
     const tab: TabItem = {
       value: tabValue,
-      label: "Auth",
+      label: "认证",
       options: {
         value: model.authenticationType,
         items: [
@@ -38,24 +38,20 @@ export function useAuthTab<T extends string>(tabValue: T, model: AuthenticatedMo
           })),
           { type: "separator" },
           {
-            label: "Inherit from Parent",
+            label: "继承上级",
             shortLabel:
               inheritedAuth != null && inheritedAuth.authenticationType !== "none" ? (
                 <HStack space={1.5}>
                   {authentication.find((a) => a.name === inheritedAuth.authenticationType)
                     ?.shortLabel ?? "UNKNOWN"}
-                  <IconTooltip
-                    icon="magic_wand"
-                    iconSize="xs"
-                    content="Authentication was inherited from an ancestor"
-                  />
+                  <IconTooltip icon="magic_wand" iconSize="xs" content="认证配置继承自上级" />
                 </HStack>
               ) : (
-                "Auth"
+                "认证"
               ),
             value: null,
           },
-          { label: "No Auth", shortLabel: "No Auth", value: "none" },
+          { label: "无认证", shortLabel: "无认证", value: "none" },
         ],
         itemsAfter: (() => {
           const actions: (
@@ -71,9 +67,9 @@ export function useAuthTab<T extends string>(tabValue: T, model: AuthenticatedMo
             (parentModel.authenticationType == null || parentModel.authenticationType === "none")
           ) {
             actions.push(
-              { type: "separator", label: "Actions" },
+              { type: "separator", label: "操作" },
               {
-                label: `Promote to ${capitalize(parentModel.model)}`,
+                label: `提升到 ${capitalize(parentModel.model)}`,
                 leftSlot: (
                   <Icon
                     icon={parentModel.model === "workspace" ? "corner_right_up" : "folder_up"}
@@ -82,12 +78,11 @@ export function useAuthTab<T extends string>(tabValue: T, model: AuthenticatedMo
                 onSelect: async () => {
                   const confirmed = await showConfirm({
                     id: "promote-auth-confirm",
-                    title: "Promote Authentication",
-                    confirmText: "Promote",
+                    title: "提升认证配置",
+                    confirmText: "提升",
                     description: (
                       <>
-                        Move authentication config to{" "}
-                        <InlineCode>{resolvedModelName(parentModel)}</InlineCode>?
+                        将认证配置移动到 <InlineCode>{resolvedModelName(parentModel)}</InlineCode>?
                       </>
                     ),
                   });
@@ -115,10 +110,10 @@ export function useAuthTab<T extends string>(tabValue: T, model: AuthenticatedMo
           );
           if (ancestorWithAuth) {
             if (actions.length === 0) {
-              actions.push({ type: "separator", label: "Actions" });
+              actions.push({ type: "separator", label: "操作" });
             }
             actions.push({
-              label: `Copy from ${modelTypeLabel(ancestorWithAuth)}`,
+              label: `从 ${modelTypeLabel(ancestorWithAuth)} 复制`,
               leftSlot: (
                 <Icon
                   icon={
@@ -129,16 +124,16 @@ export function useAuthTab<T extends string>(tabValue: T, model: AuthenticatedMo
               onSelect: async () => {
                 const confirmed = await showConfirm({
                   id: "copy-auth-confirm",
-                  title: "Copy Authentication",
-                  confirmText: "Copy",
+                  title: "复制认证配置",
+                  confirmText: "复制",
                   description: (
                     <>
-                      Copy{" "}
+                      从{" "}
                       {authentication.find((a) => a.name === ancestorWithAuth.authenticationType)
-                        ?.label ?? "authentication"}{" "}
-                      config from <InlineCode>{resolvedModelName(ancestorWithAuth)}</InlineCode>?
-                      This will override the current authentication but will not affect the{" "}
-                      {modelTypeLabel(ancestorWithAuth).toLowerCase()}.
+                        ?.label ?? "认证"}{" "}
+                      复制配置：<InlineCode>{resolvedModelName(ancestorWithAuth)}</InlineCode>
+                      ？该操作会覆盖当前认证，但不会影响
+                      {modelTypeLabel(ancestorWithAuth).toLowerCase()}。
                     </>
                   ),
                 });

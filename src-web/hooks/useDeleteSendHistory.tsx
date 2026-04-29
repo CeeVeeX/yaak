@@ -18,10 +18,10 @@ export function useDeleteSendHistory() {
   const websocketConnections = useAtomValue(websocketConnectionsAtom);
 
   const labels = [
-    httpResponses.length > 0 ? pluralizeCount("Http Response", httpResponses.length) : null,
-    grpcConnections.length > 0 ? pluralizeCount("Grpc Connection", grpcConnections.length) : null,
+    httpResponses.length > 0 ? pluralizeCount("HTTP 响应", httpResponses.length) : null,
+    grpcConnections.length > 0 ? pluralizeCount("gRPC 连接", grpcConnections.length) : null,
     websocketConnections.length > 0
-      ? pluralizeCount("WebSocket Connection", websocketConnections.length)
+      ? pluralizeCount("WebSocket 连接", websocketConnections.length)
       : null,
   ].filter((l) => l != null);
 
@@ -31,16 +31,16 @@ export function useDeleteSendHistory() {
       if (labels.length === 0) {
         showAlert({
           id: "no-responses",
-          title: "Nothing to Delete",
-          body: "There is no Http, Grpc, or Websocket history",
+          title: "没有可删除项",
+          body: "当前没有 HTTP、gRPC 或 WebSocket 历史记录",
         });
         return;
       }
 
       const confirmed = await showConfirmDelete({
         id: "delete-send-history",
-        title: "Clear Send History",
-        description: <>Delete {labels.join(" and ")}?</>,
+        title: "清空发送历史",
+        description: <>删除 {labels.join("、")}？</>,
       });
       if (!confirmed) return false;
 

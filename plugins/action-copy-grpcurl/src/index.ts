@@ -6,7 +6,7 @@ const NEWLINE = "\\\n ";
 export const plugin: PluginDefinition = {
   grpcRequestActions: [
     {
-      label: "Copy as gRPCurl",
+      label: "复制为 gRPCurl",
       icon: "copy",
       async onSelect(ctx, args) {
         const rendered_request = await ctx.grpcRequest.render({

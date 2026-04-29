@@ -37,31 +37,27 @@ export function CreateEnvironmentDialog({ workspaceId, hide, onCreate }: Props) 
       }}
     >
       <PlainInput
-        label="Name"
+        label="名称"
         required
         defaultValue={name}
         onChange={setName}
-        placeholder="Production"
+        placeholder="生产环境"
       />
       <Checkbox
         checked={sharable}
-        title="Share this environment"
-        help="Sharable environments are included in data export and directory sync."
+        title="共享此环境"
+        help="可共享环境会包含在数据导出和目录同步中。"
         onChange={toggleSharable}
       />
       <div>
-        <Label
-          htmlFor="color"
-          className="mb-1.5"
-          help="Select a color to be displayed when this environment is active, to help identify it."
-        >
-          Color
+        <Label htmlFor="color" className="mb-1.5" help="为该环境选择激活时显示的颜色，便于识别。">
+          颜色
         </Label>
         <ColorPickerWithThemeColors onChange={setColor} color={color} />
       </div>
       <Button type="submit" color="secondary" className="mt-3">
         {color != null && <ColorIndicator color={color} />}
-        Create Environment
+        新建环境
       </Button>
     </form>
   );

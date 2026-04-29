@@ -146,7 +146,7 @@ export function WorkspaceEncryptionSetting({ size, expanded, onDone, onEnabledEn
         </Banner>
       ) : (
         <Label htmlFor={null} help={<EncryptionHelp />}>
-          Workspace encryption
+          工作区加密
         </Label>
       )}
     </div>
@@ -174,16 +174,15 @@ function EnterWorkspaceKey({
   const handleForgotKey = async () => {
     const confirmed = await showConfirm({
       id: "disable-encryption",
-      title: "Disable Encryption",
+      title: "禁用加密",
       color: "danger",
-      confirmText: "Disable Encryption",
+      confirmText: "禁用加密",
       description: (
         <>
-          This will disable encryption for this workspace. Any previously encrypted values will fail
-          to decrypt and will need to be re-entered manually.
+          这将禁用此工作区的加密功能。任何之前加密的值将无法解密，需要手动重新输入。
           <br />
           <br />
-          This action cannot be undone.
+          此操作无法撤销。
         </>
       ),
     });
@@ -200,8 +199,7 @@ function EnterWorkspaceKey({
         <Banner color="danger">{error}</Banner>
       ) : (
         <Banner color="info">
-          This workspace contains encrypted values but no key is configured. Please enter the
-          workspace key to access the encrypted data.
+          此工作区包含加密的值，但未配置密钥。请输入工作区密钥以访问加密的数据。
         </Banner>
       )}
       <HStack
@@ -223,11 +221,11 @@ function EnterWorkspaceKey({
         <PlainInput
           required
           onChange={setKey}
-          label="Workspace encryption key"
+          label="工作区加密密钥"
           placeholder="YK0000-111111-222222-333333-444444-AAAAAA-BBBBBB-CCCCCC-DDDDDD"
         />
         <Button variant="border" type="submit" color="secondary">
-          Submit
+          提交
         </Button>
       </HStack>
       <button
@@ -235,7 +233,7 @@ function EnterWorkspaceKey({
         onClick={handleForgotKey}
         className="text-text-subtlest text-sm hover:text-text-subtle"
       >
-        Forgot your key?
+        忘记密钥了？
       </button>
     </VStack>
   );
@@ -262,16 +260,15 @@ function KeyRevealer({
       <VStack space={0.5}>
         {!disableLabel && (
           <span className="text-sm text-primary flex items-center gap-1">
-            Workspace encryption key{" "}
-            <IconTooltip iconSize="sm" size="lg" content={helpAfterEncryption} />
+            工作区加密密钥 <IconTooltip iconSize="sm" size="lg" content={helpAfterEncryption} />
           </span>
         )}
         {encryptionKey && <HighlightedKey keyText={encryptionKey} show={show} />}
       </VStack>
       <HStack>
-        {encryptionKey && <CopyIconButton text={encryptionKey} title="Copy workspace key" />}
+        {encryptionKey && <CopyIconButton text={encryptionKey} title="复制工作区密钥" />}
         <IconButton
-          title={show ? "Hide" : "Reveal" + "workspace key"}
+          title={show ? "隐藏" : "揭示" + "工作区密钥"}
           icon={show ? "eye_closed" : "eye"}
           onClick={() => setShow((v) => !v)}
         />
@@ -307,8 +304,6 @@ function HighlightedKey({ keyText, show }: { keyText: string; show: boolean }) {
 
 const helpAfterEncryption = (
   <p>
-    The following key is used for encryption operations within this workspace. It is stored securely
-    using your OS keychain, but it is recommended to back it up. If you share this workspace with
-    others, you&apos;ll need to send them this key to access any encrypted values.
+    以下密钥用于此工作区内的加密操作。它通过您的操作系统密钥库安全存储，但建议您进行备份。如果您与他人共享此工作区，则需要将此密钥发送给他们，以便他们访问任何加密的值。
   </p>
 );

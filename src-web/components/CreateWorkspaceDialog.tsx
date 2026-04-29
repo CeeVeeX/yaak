@@ -53,7 +53,7 @@ export function CreateWorkspaceDialog({ hide }: Props) {
             .catch((err) => {
               showErrorToast({
                 id: "git-init-error",
-                title: "Error initializing Git",
+                title: "初始化 Git 失败",
                 message: String(err),
               });
             });
@@ -72,7 +72,7 @@ export function CreateWorkspaceDialog({ hide }: Props) {
         }
       }}
     >
-      <PlainInput required label="Name" defaultValue={name} onChange={setName} />
+      <PlainInput required label="名称" defaultValue={name} onChange={setName} />
 
       <SyncToFilesystemSetting
         onChange={setSyncConfig}
@@ -81,16 +81,12 @@ export function CreateWorkspaceDialog({ hide }: Props) {
       />
       <div>
         <Label htmlFor={null} help={<EncryptionHelp />}>
-          Workspace encryption
+          工作区加密
         </Label>
-        <Checkbox
-          checked={setupEncryption}
-          onChange={setSetupEncryption}
-          title="Enable Encryption"
-        />
+        <Checkbox checked={setupEncryption} onChange={setSetupEncryption} title="启用加密" />
       </div>
       <Button type="submit" color="primary" className="w-full mt-3">
-        Create Workspace
+        创建工作区
       </Button>
     </VStack>
   );

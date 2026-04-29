@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/JamesIves/github-sponsors-readme-action">
-    <img width="200px" src="https://github.com/mountain-loop/yaak/raw/main/crates-tauri/yaak-app/icons/icon.png">
+    <img width="200px" src="./crates-tauri/yaak-app/icons/icon.png">
   </a>
 </p>
 
@@ -9,7 +9,14 @@
 </h1>
 
 <p align="center">
+  <a href="./README.zh-CN.md">中文说明</a>
+</p>
+
+<p align="center">
     A fast, privacy-first API client for REST, GraphQL, SSE, WebSocket, and gRPC – built with Tauri, Rust, and React.
+</p>
+<p align="center">
+  This repository is maintained independently for continued secondary development.
 </p>
 <p align="center">
  Development is funded by community-purchased <a href="https://yaak.app/pricing">licenses</a>. You can also <a href="https://github.com/sponsors/gschier">become a sponsor</a> to have your logo appear below. 💖

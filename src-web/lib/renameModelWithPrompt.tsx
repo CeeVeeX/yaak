@@ -5,25 +5,25 @@ import { showPrompt } from "./prompt";
 
 export async function renameModelWithPrompt(model: Extract<AnyModel, { name: string }> | null) {
   if (model == null) {
-    throw new Error("Tried to rename null model");
+    throw new Error("尝试重命名空模型");
   }
 
   const name = await showPrompt({
     id: "rename-request",
-    title: "Rename Request",
+    title: "重命名请求",
     required: false,
     description:
       model.name === "" ? (
-        "Enter a new name"
+        "输入新名称"
       ) : (
         <>
-          Enter a new name for <InlineCode>{model.name}</InlineCode>
+          为 <InlineCode>{model.name}</InlineCode> 输入新名称
         </>
       ),
-    label: "Name",
-    placeholder: "New Name",
+    label: "名称",
+    placeholder: "新名称",
     defaultValue: model.name,
-    confirmText: "Save",
+    confirmText: "保存",
   });
 
   if (name == null) return;

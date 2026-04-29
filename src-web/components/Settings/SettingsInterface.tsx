@@ -26,7 +26,7 @@ const fontSizeOptions = [
 ].map((n) => ({ label: `${n}`, value: `${n}` }));
 
 const keymaps: { value: EditorKeymap; label: string }[] = [
-  { value: "default", label: "Default" },
+  { value: "default", label: "默认" },
   { value: "vim", label: "Vim" },
   { value: "vscode", label: "VSCode" },
   { value: "emacs", label: "Emacs" },
@@ -44,14 +44,14 @@ export function SettingsInterface() {
   return (
     <VStack space={3} className="mb-4">
       <div className="mb-3">
-        <Heading>Interface</Heading>
-        <p className="text-text-subtle">Tweak settings related to the user interface.</p>
+        <Heading>界面</Heading>
+        <p className="text-text-subtle">调整与用户界面相关的设置。</p>
       </div>
       <Select
         name="switchWorkspaceBehavior"
-        label="Open workspace behavior"
+        label="打开工作区行为"
         size="sm"
-        help="When opening a workspace, should it open in the current window or a new window?"
+        help="打开工作区时，应在当前窗口还是新窗口中打开？"
         value={
           settings.openWorkspaceNewWindow === true
             ? "new"
@@ -65,9 +65,9 @@ export function SettingsInterface() {
           else await patchModel(settings, { openWorkspaceNewWindow: null });
         }}
         options={[
-          { label: "Always ask", value: "ask" },
-          { label: "Open in current window", value: "current" },
-          { label: "Open in new window", value: "new" },
+          { label: "每次询问", value: "ask" },
+          { label: "在当前窗口打开", value: "current" },
+          { label: "在新窗口打开", value: "new" },
         ]}
       />
       <HStack space={2} alignItems="end">
@@ -75,10 +75,10 @@ export function SettingsInterface() {
           <Select
             size="sm"
             name="uiFont"
-            label="Interface font"
+            label="界面字体"
             value={settings.interfaceFont ?? NULL_FONT_VALUE}
             options={[
-              { label: "System default", value: NULL_FONT_VALUE },
+              { label: "系统默认", value: NULL_FONT_VALUE },
               ...(fonts.data.uiFonts.map((f) => ({
                 label: f,
                 value: f,
@@ -99,7 +99,7 @@ export function SettingsInterface() {
           hideLabel
           size="sm"
           name="interfaceFontSize"
-          label="Interface Font Size"
+          label="界面字体大小"
           defaultValue="14"
           value={`${settings.interfaceFontSize}`}
           options={fontSizeOptions}
@@ -111,10 +111,10 @@ export function SettingsInterface() {
           <Select
             size="sm"
             name="editorFont"
-            label="Editor font"
+            label="编辑器字体"
             value={settings.editorFont ?? NULL_FONT_VALUE}
             options={[
-              { label: "System default", value: NULL_FONT_VALUE },
+              { label: "系统默认", value: NULL_FONT_VALUE },
               ...(fonts.data.editorFonts.map((f) => ({
                 label: f,
                 value: f,
@@ -130,7 +130,7 @@ export function SettingsInterface() {
           hideLabel
           size="sm"
           name="editorFontSize"
-          label="Editor Font Size"
+          label="编辑器字体大小"
           defaultValue="12"
           value={`${settings.editorFontSize}`}
           options={fontSizeOptions}
@@ -143,19 +143,19 @@ export function SettingsInterface() {
         leftSlot={<Icon icon="keyboard" color="secondary" />}
         size="sm"
         name="editorKeymap"
-        label="Editor keymap"
+        label="编辑器键位映射"
         value={`${settings.editorKeymap}`}
         options={keymaps}
         onChange={(v) => patchModel(settings, { editorKeymap: v })}
       />
       <Checkbox
         checked={settings.editorSoftWrap}
-        title="Wrap editor lines"
+        title="编辑器自动换行"
         onChange={(editorSoftWrap) => patchModel(settings, { editorSoftWrap })}
       />
       <Checkbox
         checked={settings.coloredMethods}
-        title="Colorize request methods"
+        title="请求方法高亮显示"
         onChange={(coloredMethods) => patchModel(settings, { coloredMethods })}
       />
       <CargoFeature feature="license">
@@ -167,8 +167,8 @@ export function SettingsInterface() {
       {type() !== "macos" && (
         <Checkbox
           checked={settings.hideWindowControls}
-          title="Hide window controls"
-          help="Hide the close/maximize/minimize controls on Windows or Linux"
+          title="隐藏窗口控制按钮"
+          help="在 Windows 或 Linux 上隐藏关闭/最大化/最小化按钮"
           onChange={(hideWindowControls) => patchModel(settings, { hideWindowControls })}
         />
       )}
@@ -182,8 +182,8 @@ function NativeTitlebarSetting({ settings }: { settings: Settings }) {
     <div className="flex gap-1 overflow-hidden h-2xs">
       <Checkbox
         checked={nativeTitlebar}
-        title="Native title bar"
-        help="Use the operating system's standard title bar and window controls"
+        title="原生标题栏"
+        help="使用操作系统标准标题栏和窗口控制按钮"
         onChange={setNativeTitlebar}
       />
       {settings.useNativeTitlebar !== nativeTitlebar && (
@@ -195,7 +195,7 @@ function NativeTitlebarSetting({ settings }: { settings: Settings }) {
             await invokeCmd("cmd_restart");
           }}
         >
-          Apply and Restart
+          应用并重启
         </Button>
       )}
     </div>
@@ -211,27 +211,26 @@ function LicenseSettings({ settings }: { settings: Settings }) {
   return (
     <Checkbox
       checked={settings.hideLicenseBadge}
-      title="Hide personal use badge"
+      title="隐藏个人使用标识"
       onChange={async (hideLicenseBadge) => {
         if (hideLicenseBadge) {
           const confirmed = await showConfirm({
             id: "hide-license-badge",
-            title: "Confirm Personal Use",
-            confirmText: "Confirm",
+            title: "确认个人使用",
+            confirmText: "确认",
             description: (
               <VStack space={3}>
-                <p>Hey there 👋🏼</p>
+                <p>你好 👋</p>
                 <p>
-                  Yaak is free for personal projects and learning.{" "}
-                  <strong>If you’re using Yaak at work, a license is required.</strong>
+                  Yaak 可免费用于个人项目和学习。 <strong>若用于工作场景，则需要购买许可。</strong>
                 </p>
                 <p>
-                  Licenses help keep Yaak independent and sustainable.{" "}
-                  <Link href="https://yaak.app/pricing?s=badge">Purchase a License →</Link>
+                  许可费用有助于 Yaak 保持独立并可持续发展。{" "}
+                  <Link href="https://yaak.app/pricing?s=badge">购买许可 →</Link>
                 </p>
               </VStack>
             ),
-            requireTyping: "Personal Use",
+            requireTyping: "个人使用",
             color: "info",
           });
           if (!confirmed) {

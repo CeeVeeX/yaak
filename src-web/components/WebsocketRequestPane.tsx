@@ -100,18 +100,18 @@ export function WebsocketRequestPane({ style, fullHeight, className, activeReque
     return [
       {
         value: TAB_MESSAGE,
-        label: "Message",
+        label: "消息",
       } as TabItem,
       {
         value: TAB_PARAMS,
         rightSlot: <CountBadge count={urlParameterPairs.length} />,
-        label: "Params",
+        label: "参数",
       },
       ...headersTab,
       ...authTab,
       {
         value: TAB_DESCRIPTION,
-        label: "Info",
+        label: "信息",
       },
     ];
   }, [authTab, headersTab, urlParameterPairs.length]);
@@ -207,7 +207,7 @@ export function WebsocketRequestPane({ style, fullHeight, className, activeReque
                 isLoading && (
                   <IconButton
                     size="xs"
-                    title="Close connection"
+                    title="关闭连接"
                     icon="x"
                     iconColor="secondary"
                     className="w-8 mr-0.5 !h-full"

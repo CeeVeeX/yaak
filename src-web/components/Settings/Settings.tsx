@@ -7,7 +7,6 @@ import classNames from "classnames";
 import { useAtomValue } from "jotai";
 import { useKeyPressEvent } from "react-use";
 import { appInfo } from "../../lib/appInfo";
-import { capitalize } from "../../lib/capitalize";
 import { CountBadge } from "../core/CountBadge";
 import { Icon } from "../core/Icon";
 import { HStack } from "../core/Stacks";
@@ -46,6 +45,29 @@ const tabs = [
 ] as const;
 export type SettingsTab = (typeof tabs)[number];
 
+function getSettingsTabLabel(tab: SettingsTab): string {
+  switch (tab) {
+    case TAB_GENERAL:
+      return "通用";
+    case TAB_THEME:
+      return "主题";
+    case TAB_INTERFACE:
+      return "界面";
+    case TAB_SHORTCUTS:
+      return "快捷键";
+    case TAB_PROXY:
+      return "代理";
+    case TAB_CERTIFICATES:
+      return "证书";
+    case TAB_PLUGINS:
+      return "插件";
+    case TAB_LICENSE:
+      return "许可";
+    default:
+      return tab;
+  }
+}
+
 export default function Settings({ hide }: Props) {
   const { tab: tabFromQuery } = useSearch({ from: "/workspaces/$workspaceId/settings" });
   // Parse tab and subtab (e.g., "plugins:installed")
@@ -83,7 +105,7 @@ export default function Settings({ hide }: Props) {
             justifyContent="center"
             className="w-full h-full grid grid-cols-[1fr_auto] pointer-events-none"
           >
-            <div className={classNames(type() === "macos" ? "text-center" : "pl-2")}>Settings</div>
+            <div className={classNames(type() === "macos" ? "text-center" : "pl-2")}>设置</div>
           </HStack>
         </HeaderSize>
       )}
@@ -92,11 +114,11 @@ export default function Settings({ hide }: Props) {
         defaultValue={mainTab || tabFromQuery}
         addBorders
         tabListClassName="min-w-[10rem] bg-surface x-theme-sidebar border-r border-border pl-3"
-        label="Settings"
+        label="设置"
         tabs={tabs.map(
           (value): TabItem => ({
             value,
-            label: capitalize(value),
+            label: getSettingsTabLabel(value),
             hidden: !appInfo.featureLicense && value === TAB_LICENSE,
             leftSlot:
               value === TAB_GENERAL ? (

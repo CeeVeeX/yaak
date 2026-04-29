@@ -39,7 +39,7 @@ export function BulkPairEditor({
       stateKey={`bulk_pair.${stateKey}`}
       forcedEnvironmentId={forcedEnvironmentId}
       forceUpdateKey={forceUpdateKey}
-      placeholder={`${namePlaceholder ?? "name"}: ${valuePlaceholder ?? "value"}`}
+      placeholder={`${namePlaceholder ?? "name"}: ${valuePlaceholder ?? "值"}`}
       defaultValue={pairsText}
       language="pairs"
       onChange={handleChange}

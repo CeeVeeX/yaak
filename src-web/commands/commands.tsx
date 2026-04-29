@@ -29,17 +29,17 @@ export const createFolder = createFastMutation<
   mutationFn: async (patch) => {
     const workspaceId = jotaiStore.get(activeWorkspaceIdAtom);
     if (workspaceId == null) {
-      throw new Error("Cannot create folder when there's no active workspace");
+      throw new Error("当前无活动工作区，无法创建文件夹");
     }
 
     if (!patch.name) {
       const name = await showPrompt({
         id: "new-folder",
-        label: "Name",
-        defaultValue: "Folder",
-        title: "New Folder",
-        confirmText: "Create",
-        placeholder: "Name",
+        label: "名称",
+        defaultValue: "文件夹",
+        title: "新建文件夹",
+        confirmText: "创建",
+        placeholder: "名称",
       });
       if (name == null) return null;
 
@@ -86,7 +86,7 @@ export const syncWorkspace = createFastMutation<
 
     showDialog({
       id: "commit-sync",
-      title: "Changes Detected",
+      title: "检测到变更",
       size: "md",
       render: ({ hide }) => (
         <form
@@ -99,21 +99,18 @@ export const syncWorkspace = createFastMutation<
         >
           {isDeletingWorkspace ? (
             <Banner color="danger">
-              🚨 <strong>Changes contain a workspace deletion!</strong>
+              🚨 <strong>变更中包含工作区删除操作！</strong>
             </Banner>
           ) : (
             <span />
           )}
-          <p>
-            {pluralizeCount("file", dbOps.length)} in the directory{" "}
-            {dbOps.length === 1 ? "has" : "have"} changed. Do you want to update your workspace?
-          </p>
+          <p>目录中有 {pluralizeCount("个文件", dbOps.length)} 发生变化。是否更新你的工作区？</p>
           <Table scrollable className="my-4">
             <TableHead>
               <TableRow>
-                <TableHeaderCell>Type</TableHeaderCell>
-                <TableHeaderCell>Name</TableHeaderCell>
-                <TableHeaderCell>Operation</TableHeaderCell>
+                <TableHeaderCell>类型</TableHeaderCell>
+                <TableHeaderCell>名称</TableHeaderCell>
+                <TableHeaderCell>操作</TableHeaderCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -124,17 +121,17 @@ export const syncWorkspace = createFastMutation<
                 let model: string;
 
                 if (op.type === "dbCreate") {
-                  label = "create";
+                  label = "创建";
                   name = resolvedModelNameWithFolders(op.fs.model);
                   color = "text-success";
                   model = modelTypeLabel(op.fs.model);
                 } else if (op.type === "dbUpdate") {
-                  label = "update";
+                  label = "更新";
                   name = resolvedModelNameWithFolders(op.fs.model);
                   color = "text-info";
                   model = modelTypeLabel(op.fs.model);
                 } else if (op.type === "dbDelete") {
-                  label = "delete";
+                  label = "删除";
                   name = resolvedModelNameWithFolders(op.model);
                   color = "text-danger";
                   model = modelTypeLabel(op.model);
@@ -157,10 +154,10 @@ export const syncWorkspace = createFastMutation<
           </Table>
           <footer className="py-3 flex flex-row-reverse items-center gap-3">
             <Button type="submit" color="primary">
-              Apply Changes
+              应用变更
             </Button>
             <Button onClick={hide} color="secondary">
-              Cancel
+              取消
             </Button>
           </footer>
         </form>

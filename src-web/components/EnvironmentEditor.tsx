@@ -114,16 +114,16 @@ export function EnvironmentEditor({ environment, hideName, className, setRef }: 
           {isEncryptionEnabled ? (
             !allVariableAreEncrypted ? (
               <PillButton color="notice" onClick={() => encryptEnvironment(environment)}>
-                Encrypt All Variables
+                加密所有变量
               </PillButton>
             ) : (
               <PillButton color="secondary" onClick={setupOrConfigureEncryption}>
-                Encryption Settings
+                加密设置
               </PillButton>
             )
           ) : (
             <PillButton color="secondary" onClick={() => valueVisibility.set((v) => !v)}>
-              {valueVisibility.value ? "Hide Values" : "Show Values"}
+              {valueVisibility.value ? "隐藏值" : "显示值"}
             </PillButton>
           )}
           <PillButton
@@ -133,7 +133,7 @@ export function EnvironmentEditor({ environment, hideName, className, setRef }: 
               await patchModel(environment, { public: !environment.public });
             }}
           >
-            {environment.public ? "Sharable" : "Private"}
+            {environment.public ? "公共" : "私有"}
           </PillButton>
         </Heading>
         {environment.public && (!isEncryptionEnabled || !allVariableAreEncrypted) && (
@@ -143,13 +143,13 @@ export function EnvironmentEditor({ environment, hideName, className, setRef }: 
             className="mr-3"
             actions={[
               {
-                label: "Encrypt Variables",
+                label: "加密变量",
                 onClick: () => encryptEnvironment(environment),
                 color: "success",
               },
             ]}
           >
-            This sharable environment contains plain-text secrets
+            此共享环境包含明文密钥
           </DismissibleBanner>
         )}
       </div>
@@ -159,7 +159,7 @@ export function EnvironmentEditor({ environment, hideName, className, setRef }: 
         allowMultilineValues
         preferenceName="environment"
         nameAutocomplete={nameAutocomplete}
-        namePlaceholder="VAR_NAME"
+        namePlaceholder="变量名称"
         nameValidate={validateName}
         valueType={valueType}
         valueAutocompleteVariables="environment"

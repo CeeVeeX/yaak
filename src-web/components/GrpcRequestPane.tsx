@@ -98,7 +98,7 @@ export function GrpcRequestPane({
   const handleChangeService = useCallback(
     async (v: string) => {
       const [serviceName, methodName] = v.split("/", 2);
-      if (serviceName == null || methodName == null) throw new Error("Should never happen");
+      if (serviceName == null || methodName == null) throw new Error("不应发生");
       await patchModel(activeRequest, {
         service: serviceName,
         method: methodName,
@@ -113,8 +113,8 @@ export function GrpcRequestPane({
     if (activeRequest.service == null || activeRequest.method == null) {
       alert({
         id: "grpc-invalid-service-method",
-        title: "Error",
-        body: "Service or method not selected",
+        title: "错误",
+        body: "尚未选择服务或方法",
       });
     }
     onGo();
@@ -127,12 +127,12 @@ export function GrpcRequestPane({
 
   const tabs: TabItem[] = useMemo(
     () => [
-      { value: TAB_MESSAGE, label: "Message" },
+      { value: TAB_MESSAGE, label: "消息" },
       ...metadataTab,
       ...authTab,
       {
         value: TAB_DESCRIPTION,
-        label: "Info",
+        label: "信息",
         rightSlot: activeRequest.description && <CountBadge count={true} />,
       },
     ],
@@ -183,7 +183,7 @@ export function GrpcRequestPane({
             }))}
             itemsAfter={[
               {
-                label: "Refresh",
+                label: "刷新",
                 type: "default",
                 leftSlot: <Icon size="sm" icon="refresh" />,
               },
@@ -199,24 +199,18 @@ export function GrpcRequestPane({
                 paneWidth < 400 && "flex-1",
               )}
             >
-              {select.options.find((o) => o.value === select.value)?.label ?? "No Schema"}
+              {select.options.find((o) => o.value === select.value)?.label ?? "无 Schema"}
             </Button>
           </RadioDropdown>
           {methodType === "client_streaming" || methodType === "streaming" ? (
             <>
               {isStreaming && (
                 <>
+                  <IconButton variant="border" size="sm" title="取消" onClick={onCancel} icon="x" />
                   <IconButton
                     variant="border"
                     size="sm"
-                    title="Cancel"
-                    onClick={onCancel}
-                    icon="x"
-                  />
-                  <IconButton
-                    variant="border"
-                    size="sm"
-                    title="Commit"
+                    title="提交"
                     onClick={onCommit}
                     icon="check"
                   />
@@ -225,7 +219,7 @@ export function GrpcRequestPane({
               <IconButton
                 size="sm"
                 variant="border"
-                title={isStreaming ? "Connect" : "Send"}
+                title={isStreaming ? "连接" : "发送"}
                 hotkeyAction="request.send"
                 onClick={isStreaming ? handleSend : handleConnect}
                 icon={isStreaming ? "send_horizontal" : "arrow_up_down"}
@@ -235,7 +229,7 @@ export function GrpcRequestPane({
             <IconButton
               size="sm"
               variant="border"
-              title={methodType === "unary" ? "Send" : "Connect"}
+              title={methodType === "unary" ? "发送" : "连接"}
               hotkeyAction="request.send"
               onClick={isStreaming ? onCancel : handleConnect}
               disabled={methodType === "no-schema" || methodType === "no-method"}
@@ -251,7 +245,7 @@ export function GrpcRequestPane({
         </HStack>
       </div>
       <Tabs
-        label="Request"
+        label="请求"
         tabs={tabs}
         tabListClassName="mt-1 !mb-1.5"
         storageKey="grpc_request_tabs"
@@ -283,7 +277,7 @@ export function GrpcRequestPane({
         <TabContent value={TAB_DESCRIPTION}>
           <div className="grid grid-rows-[auto_minmax(0,1fr)] h-full">
             <PlainInput
-              label="Request Name"
+              label="请求名称"
               hideLabel
               forceUpdateKey={forceUpdateKey}
               defaultValue={activeRequest.name}
@@ -294,7 +288,7 @@ export function GrpcRequestPane({
             />
             <MarkdownEditor
               name="request-description"
-              placeholder="Request description"
+              placeholder="请求说明"
               defaultValue={activeRequest.description}
               stateKey={`description.${activeRequest.id}`}
               onChange={handleDescriptionChange}

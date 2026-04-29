@@ -72,25 +72,25 @@ export function SettingsTheme() {
   return (
     <VStack space={3} className="mb-4">
       <div className="mb-3">
-        <Heading>Theme</Heading>
+        <Heading>主题</Heading>
         <p className="text-text-subtle">
-          Make Yaak your own by selecting a theme, or{" "}
+          通过选择主题来定制 Yaak，或{" "}
           <Link href="https://yaak.app/docs/plugin-development/plugins-quick-start">
-            Create Your Own
+            创建自己的主题
           </Link>
         </p>
       </div>
       <Select
         name="appearance"
-        label="Appearance"
+        label="外观"
         labelPosition="top"
         size="sm"
         value={settings.appearance}
         onChange={(appearance) => patchModel(settings, { appearance })}
         options={[
-          { label: "Automatic", value: "system" },
-          { label: "Light", value: "light" },
-          { label: "Dark", value: "dark" },
+          { label: "自动", value: "system" },
+          { label: "浅色", value: "light" },
+          { label: "深色", value: "dark" },
         ]}
       />
       <HStack space={2}>
@@ -99,7 +99,7 @@ export function SettingsTheme() {
             hideLabel
             leftSlot={<Icon icon="sun" color="secondary" />}
             name="lightTheme"
-            label="Light Theme"
+            label="浅色主题"
             size="sm"
             className="flex-1"
             value={activeTheme.data.light.id}
@@ -112,7 +112,7 @@ export function SettingsTheme() {
             hideLabel
             name="darkTheme"
             className="flex-1"
-            label="Dark Theme"
+            label="深色主题"
             leftSlot={<Icon icon="moon" color="secondary" />}
             size="sm"
             value={activeTheme.data.dark.id}
@@ -129,7 +129,7 @@ export function SettingsTheme() {
         <HStack className="text" space={1.5}>
           <Icon icon={appearance === "dark" ? "moon" : "sun"} />
           <strong>{activeTheme.data.active.label}</strong>
-          <em>(preview)</em>
+          <em>（预览）</em>
         </HStack>
         <HStack space={1.5} className="w-full">
           {buttonColors.map((c, i) => (
@@ -159,7 +159,7 @@ export function SettingsTheme() {
         <Suspense>
           <Editor
             defaultValue={[
-              "let foo = { // Demo code editor",
+              "let foo = { // 示例代码编辑器",
               '  foo: ("bar" || "baz" ?? \'qux\'),',
               "  baz: [1, 10.2, null, false, true],",
               "};",

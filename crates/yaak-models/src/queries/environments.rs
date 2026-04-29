@@ -45,7 +45,7 @@ impl<'a> DbContext<'a> {
             let e = self.upsert_environment(
                 &Environment {
                     workspace_id: workspace_id.to_string(),
-                    name: "Global Variables".to_string(),
+                    name: "全局变量".to_string(),
                     parent_model: "workspace".to_string(),
                     ..Default::default()
                 },

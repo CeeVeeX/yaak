@@ -5,7 +5,7 @@ import { showDialog } from "./dialog";
 
 export function showColorPicker(environment: Environment) {
   showDialog({
-    title: "Environment Color",
+    title: "环境颜色",
     id: "color-picker",
     size: "sm",
     render: ({ hide }) => {

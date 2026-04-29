@@ -88,7 +88,7 @@ export function HeadersEditor({
         nameAutocomplete={nameAutocomplete}
         nameAutocompleteFunctions
         nameAutocompleteVariables
-        namePlaceholder="Header-Name"
+        namePlaceholder="标头名称"
         nameValidate={validateHttpHeader}
         onChange={onChange}
         pairs={headers}

@@ -40,7 +40,7 @@ export function migrateImport(contents: string) {
       // Create the base environment
       const baseEnvironment: Partial<Environment> = {
         id: `GENERATE_ID::base_env_${workspace.id}`,
-        name: "Global Variables",
+        name: "全局变量",
         variables: workspace.variables,
         workspaceId: workspace.id,
       };

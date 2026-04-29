@@ -74,7 +74,7 @@ export function RecentRequestsDropdown({ className }: Props) {
       return [
         {
           key: "no-recent-requests",
-          label: "No recent requests",
+          label: "暂无最近请求",
           disabled: true,
         },
       ];

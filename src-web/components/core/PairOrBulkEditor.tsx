@@ -24,7 +24,7 @@ export function PairOrBulkEditor({ preferenceName, ...props }: Props) {
         <IconButton
           size="sm"
           variant="border"
-          title={useBulk ? "Enable form edit" : "Enable bulk edit"}
+          title={useBulk ? "启用表单编辑" : "启用批量编辑"}
           className={classNames(
             "transition-opacity opacity-0 group-hover:opacity-80 hover:!opacity-100 shadow",
             "bg-surface hover:text group-hover/wrapper:opacity-100",

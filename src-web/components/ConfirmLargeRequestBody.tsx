@@ -31,22 +31,22 @@ export function ConfirmLargeRequestBody({ children, request }: Props) {
     return (
       <Banner color="primary" className="flex flex-col gap-3">
         <p>
-          Rendering content over{" "}
+          渲染超过{" "}
           <InlineCode>
             <SizeTag contentLength={tooLargeBytes} />
           </InlineCode>{" "}
-          may impact performance.
+          的内容可能影响性能。
         </p>
         <p>
-          See{" "}
+          详见{" "}
           <Link href="https://feedback.yaak.app/en/help/articles/1198684-working-with-large-values">
-            Working With Large Values
+            处理大体量内容
           </Link>{" "}
-          for tips.
+          获取建议。
         </p>
         <HStack wrap space={2}>
           <Button color="primary" size="xs" onClick={toggleShowLargeResponse}>
-            Reveal Body
+            显示请求体
           </Button>
           <Button
             color="danger"
@@ -55,9 +55,9 @@ export function ConfirmLargeRequestBody({ children, request }: Props) {
             onClick={async () => {
               const confirm = await showConfirm({
                 id: `delete-body-${request.id}`,
-                confirmText: "Delete Body",
-                title: "Delete Body Text",
-                description: "Are you sure you want to delete the request body text?",
+                confirmText: "删除请求体",
+                title: "删除请求体文本",
+                description: "确定要删除请求体文本吗？",
                 color: "danger",
               });
               if (confirm) {
@@ -65,7 +65,7 @@ export function ConfirmLargeRequestBody({ children, request }: Props) {
               }
             }}
           >
-            Delete Body
+            删除请求体
           </Button>
         </HStack>
       </Banner>

@@ -13,10 +13,10 @@ export function useCheckForUpdates() {
       if (!hasUpdate) {
         showAlert({
           id: "no-updates",
-          title: "No Update Available",
+          title: "暂无可用更新",
           body: (
             <>
-              You are currently on the latest version <InlineCode>{appInfo.version}</InlineCode>
+              你当前已是最新版本 <InlineCode>{appInfo.version}</InlineCode>
             </>
           ),
         });

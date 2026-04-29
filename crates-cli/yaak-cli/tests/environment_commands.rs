@@ -14,7 +14,7 @@ fn create_list_show_delete_round_trip() {
         .args(["environment", "list", "wk_test"])
         .assert()
         .success()
-        .stdout(contains("Global Variables"));
+        .stdout(contains("全局变量"));
 
     let create_assert = cli_cmd(data_dir)
         .args(["environment", "create", "wk_test", "--name", "Production"])

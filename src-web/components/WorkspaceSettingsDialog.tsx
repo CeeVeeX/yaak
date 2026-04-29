@@ -51,7 +51,7 @@ export function WorkspaceSettingsDialog({ workspaceId, hide, tab }: Props) {
   if (workspace == null) {
     return (
       <Banner color="danger">
-        <InlineCode>Workspace</InlineCode> not found
+        未找到 <InlineCode>Workspace</InlineCode>
       </Banner>
     );
   }
@@ -59,22 +59,22 @@ export function WorkspaceSettingsDialog({ workspaceId, hide, tab }: Props) {
   if (workspaceMeta == null)
     return (
       <Banner color="danger">
-        <InlineCode>WorkspaceMeta</InlineCode> not found for workspace
+        当前工作区缺少 <InlineCode>WorkspaceMeta</InlineCode>
       </Banner>
     );
 
   return (
     <Tabs
       defaultValue={tab ?? DEFAULT_TAB}
-      label="Folder Settings"
+      label="工作区设置"
       className="pt-4 pb-2 px-3"
       tabListClassName="pl-4"
       addBorders
       tabs={[
-        { value: TAB_GENERAL, label: "Workspace" },
+        { value: TAB_GENERAL, label: "工作区" },
         {
           value: TAB_DATA,
-          label: "Storage",
+          label: "存储",
         },
         ...headersTab,
         ...authTab,
@@ -95,7 +95,7 @@ export function WorkspaceSettingsDialog({ workspaceId, hide, tab }: Props) {
       <TabContent value={TAB_HEADERS} className="overflow-y-auto h-full px-4">
         <HeadersEditor
           inheritedHeaders={inheritedHeaders}
-          inheritedHeadersLabel="Defaults"
+          inheritedHeadersLabel="默认值"
           forceUpdateKey={workspace.id}
           headers={workspace.headers}
           onChange={(headers) => patchModel(workspace, { headers })}
@@ -107,8 +107,8 @@ export function WorkspaceSettingsDialog({ workspaceId, hide, tab }: Props) {
           <PlainInput
             required
             hideLabel
-            placeholder="Workspace Name"
-            label="Name"
+            placeholder="工作区名称"
+            label="名称"
             defaultValue={workspace.name}
             className="!text-base font-sans"
             onChange={(name) => patchModel(workspace, { name })}
@@ -116,7 +116,7 @@ export function WorkspaceSettingsDialog({ workspaceId, hide, tab }: Props) {
 
           <MarkdownEditor
             name="workspace-description"
-            placeholder="Workspace description"
+            placeholder="工作区说明"
             className="border border-border px-2"
             defaultValue={workspace.description}
             stateKey={`description.${workspace.id}`}
@@ -139,7 +139,7 @@ export function WorkspaceSettingsDialog({ workspaceId, hide, tab }: Props) {
               variant="border"
               size="xs"
             >
-              Delete Workspace
+              删除工作区
             </Button>
             <InlineCode className="flex gap-1 items-center text-primary pl-2.5">
               {workspaceId}
@@ -147,7 +147,7 @@ export function WorkspaceSettingsDialog({ workspaceId, hide, tab }: Props) {
                 className="opacity-70 !text-primary"
                 size="2xs"
                 iconSize="sm"
-                title="Copy workspace ID"
+                title="复制工作区 ID"
                 text={workspaceId}
               />
             </InlineCode>

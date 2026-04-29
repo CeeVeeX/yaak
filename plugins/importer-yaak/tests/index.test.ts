@@ -69,7 +69,7 @@ describe("importer-yaak", () => {
             {
               id: "GENERATE_ID::base_env_w_1",
               workspaceId: "w_1",
-              name: "Global Variables",
+              name: "全局变量",
               variables: [{ name: "W1", value: "W1!" }],
             },
           ],
@@ -95,7 +95,7 @@ describe("importer-yaak", () => {
               id: "e_1",
               workspaceId: "w_1",
               base: true,
-              name: "Global Variables",
+              name: "全局变量",
               variables: [{ name: "G1", value: "G1!" }],
             },
           ],
@@ -138,7 +138,7 @@ describe("importer-yaak", () => {
             {
               id: "e_1",
               workspaceId: "w_1",
-              name: "Global Variables",
+              name: "全局变量",
               parentModel: "workspace",
               parentId: null,
               variables: [{ name: "G1", value: "G1!" }],

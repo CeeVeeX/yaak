@@ -60,13 +60,13 @@ export function FolderSettingsDialog({ folderId, tab }: Props) {
     return [
       {
         value: TAB_GENERAL,
-        label: "General",
+        label: "通用",
       },
       ...headersTab,
       ...authTab,
       {
         value: TAB_VARIABLES,
-        label: "Variables",
+        label: "变量",
         rightSlot: numVars > 0 ? <CountBadge count={numVars} /> : null,
       },
     ];
@@ -100,7 +100,7 @@ export function FolderSettingsDialog({ folderId, tab }: Props) {
 
       <Tabs
         defaultValue={tab ?? TAB_GENERAL}
-        label="Folder Settings"
+        label="文件夹设置"
         className="pt-2 pb-2 pl-3 pr-1 flex-1"
         layout="horizontal"
         addBorders
@@ -112,14 +112,14 @@ export function FolderSettingsDialog({ folderId, tab }: Props) {
         <TabContent value={TAB_GENERAL} className="overflow-y-auto h-full px-4">
           <div className="grid grid-rows-[auto_minmax(0,1fr)_auto] gap-3 pb-3 h-full">
             <Input
-              label="Folder Name"
+              label="文件夹名称"
               defaultValue={folder.name}
               onChange={(name) => patchModel(folder, { name })}
               stateKey={`name.${folder.id}`}
             />
             <MarkdownEditor
               name="folder-description"
-              placeholder="Folder description"
+              placeholder="文件夹说明"
               className="border border-border px-2"
               defaultValue={folder.description}
               stateKey={`description.${folder.id}`}
@@ -137,7 +137,7 @@ export function FolderSettingsDialog({ folderId, tab }: Props) {
                 variant="border"
                 size="xs"
               >
-                Delete Folder
+                删除文件夹
               </Button>
               <InlineCode className="flex gap-1 items-center text-primary pl-2.5">
                 {folder.id}
@@ -145,7 +145,7 @@ export function FolderSettingsDialog({ folderId, tab }: Props) {
                   className="opacity-70 !text-primary"
                   size="2xs"
                   iconSize="sm"
-                  title="Copy folder ID"
+                  title="复制文件夹 ID"
                   text={folder.id}
                 />
               </InlineCode>
@@ -166,11 +166,11 @@ export function FolderSettingsDialog({ folderId, tab }: Props) {
             <EmptyStateText>
               <VStack alignItems="center" space={1.5}>
                 <p>
-                  Override{" "}
+                  为此文件夹内请求覆盖{" "}
                   <Link href="https://yaak.app/docs/using-yaak/environments-and-variables">
-                    Variables
+                    变量
                   </Link>{" "}
-                  for requests within this folder.
+                  配置。
                 </p>
                 <Button
                   variant="border"
@@ -181,11 +181,11 @@ export function FolderSettingsDialog({ folderId, tab }: Props) {
                       parentModel: "folder",
                       parentId: folder.id,
                       model: "environment",
-                      name: "Folder Environment",
+                      name: "文件夹环境",
                     });
                   }}
                 >
-                  Create Folder Environment
+                  新建文件夹环境
                 </Button>
               </VStack>
             </EmptyStateText>

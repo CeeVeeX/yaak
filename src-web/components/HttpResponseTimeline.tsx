@@ -328,14 +328,14 @@ function getEventDisplay(event: HttpResponseEventData): EventDisplay {
       return {
         icon: "settings",
         color: "secondary",
-        label: "Setting",
+        label: "设置",
         summary: `${event.name} = ${event.value}`,
       };
     case "info":
       return {
         icon: "info",
         color: "secondary",
-        label: "Info",
+        label: "信息",
         summary: event.message,
       };
     case "redirect": {
@@ -351,7 +351,7 @@ function getEventDisplay(event: HttpResponseEventData): EventDisplay {
       return {
         icon: "arrow_big_right_dash",
         color: "success",
-        label: "Redirect",
+        label: "重定向",
         summary: `Redirecting ${event.status} ${event.url}${dropped ? ` (${dropped})` : ""}`,
       };
     }
@@ -359,28 +359,28 @@ function getEventDisplay(event: HttpResponseEventData): EventDisplay {
       return {
         icon: "arrow_big_up_dash",
         color: "primary",
-        label: "Request",
+        label: "请求",
         summary: `${event.method} ${event.path}${event.query ? `?${event.query}` : ""}${event.fragment ? `#${event.fragment}` : ""}`,
       };
     case "receive_url":
       return {
         icon: "arrow_big_down_dash",
         color: "info",
-        label: "Response",
+        label: "响应",
         summary: `${event.version} ${event.status}`,
       };
     case "header_up":
       return {
         icon: "arrow_big_up_dash",
         color: "primary",
-        label: "Header",
+        label: "请求头",
         summary: `${event.name}: ${event.value}`,
       };
     case "header_down":
       return {
         icon: "arrow_big_down_dash",
         color: "info",
-        label: "Header",
+        label: "响应头",
         summary: `${event.name}: ${event.value}`,
       };
 
@@ -388,14 +388,14 @@ function getEventDisplay(event: HttpResponseEventData): EventDisplay {
       return {
         icon: "info",
         color: "secondary",
-        label: "Chunk",
+        label: "数据块",
         summary: `${formatBytes(event.bytes)} chunk sent`,
       };
     case "chunk_received":
       return {
         icon: "info",
         color: "secondary",
-        label: "Chunk",
+        label: "数据块",
         summary: `${formatBytes(event.bytes)} chunk received`,
       };
     case "dns_resolved":
@@ -411,8 +411,8 @@ function getEventDisplay(event: HttpResponseEventData): EventDisplay {
       return {
         icon: "info",
         color: "secondary",
-        label: "Unknown",
-        summary: "Unknown event",
+        label: "未知",
+        summary: "未知事件",
       };
   }
 }

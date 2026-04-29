@@ -66,9 +66,9 @@ export function DnsOverridesEditor({ workspace }: Props) {
   return (
     <VStack space={3} className="pb-3">
       <div className="text-text-subtle text-sm">
-        Override DNS resolution for specific hostnames. This works like{" "}
-        <code className="text-text-subtlest bg-surface-highlight px-1 rounded">/etc/hosts</code> but
-        only for requests made from this workspace.
+        为指定主机名覆盖 DNS 解析。其效果类似{" "}
+        <code className="text-text-subtlest bg-surface-highlight px-1 rounded">/etc/hosts</code>，
+        但仅作用于当前工作区发出的请求。
       </div>
 
       {overridesWithIds.length > 0 && (
@@ -76,9 +76,9 @@ export function DnsOverridesEditor({ workspace }: Props) {
           <TableHead>
             <TableRow>
               <TableHeaderCell className="w-8" />
-              <TableHeaderCell>Hostname</TableHeaderCell>
-              <TableHeaderCell>IPv4 Address</TableHeaderCell>
-              <TableHeaderCell>IPv6 Address</TableHeaderCell>
+              <TableHeaderCell>主机名</TableHeaderCell>
+              <TableHeaderCell>IPv4 地址</TableHeaderCell>
+              <TableHeaderCell>IPv6 地址</TableHeaderCell>
               <TableHeaderCell className="w-10" />
             </TableRow>
           </TableHead>
@@ -97,7 +97,7 @@ export function DnsOverridesEditor({ workspace }: Props) {
 
       <HStack>
         <Button size="xs" color="secondary" variant="border" onClick={handleAdd}>
-          Add DNS Override
+          添加 DNS 覆盖
         </Button>
       </HStack>
     </VStack>
@@ -119,7 +119,7 @@ function DnsOverrideRow({ override, onUpdate, onDelete }: DnsOverrideRowProps) {
       <TableCell>
         <Checkbox
           hideLabel
-          title={override.enabled ? "Disable override" : "Enable override"}
+          title={override.enabled ? "禁用覆盖" : "启用覆盖"}
           checked={override.enabled ?? true}
           onChange={(enabled) => onUpdate({ enabled })}
         />
@@ -128,7 +128,7 @@ function DnsOverrideRow({ override, onUpdate, onDelete }: DnsOverrideRowProps) {
         <PlainInput
           size="sm"
           hideLabel
-          label="Hostname"
+          label="主机名"
           placeholder="api.example.com"
           defaultValue={override.hostname}
           onChange={(hostname) => onUpdate({ hostname })}
@@ -138,7 +138,7 @@ function DnsOverrideRow({ override, onUpdate, onDelete }: DnsOverrideRowProps) {
         <PlainInput
           size="sm"
           hideLabel
-          label="IPv4 addresses"
+          label="IPv4 地址"
           placeholder="127.0.0.1"
           defaultValue={ipv4Value}
           onChange={(value) =>
@@ -155,7 +155,7 @@ function DnsOverrideRow({ override, onUpdate, onDelete }: DnsOverrideRowProps) {
         <PlainInput
           size="sm"
           hideLabel
-          label="IPv6 addresses"
+          label="IPv6 地址"
           placeholder="::1"
           defaultValue={ipv6Value}
           onChange={(value) =>
@@ -169,13 +169,7 @@ function DnsOverrideRow({ override, onUpdate, onDelete }: DnsOverrideRowProps) {
         />
       </TableCell>
       <TableCell>
-        <IconButton
-          size="xs"
-          iconSize="sm"
-          icon="trash"
-          title="Delete override"
-          onClick={onDelete}
-        />
+        <IconButton size="xs" iconSize="sm" icon="trash" title="删除覆盖项" onClick={onDelete} />
       </TableCell>
     </TableRow>
   );

@@ -554,8 +554,7 @@ function SetupSyncDropdown({ workspaceMeta }: { workspaceMeta: WorkspaceMeta }) 
 
   const banner = (
     <Banner color="info">
-      When enabled, workspace data syncs to the chosen folder as text files, ideal for backup and
-      Git collaboration.
+      启用后，工作区数据将同步到所选文件夹中存储为文本文件，非常适合备份和 Git 协作。
     </Banner>
   );
 
@@ -569,19 +568,19 @@ function SetupSyncDropdown({ workspaceMeta }: { workspaceMeta: WorkspaceMeta }) 
         },
         {
           color: "success",
-          label: "Open Workspace Settings",
+          label: "打开工作区设置",
           leftSlot: <Icon icon="settings" />,
           onSelect: () => openWorkspaceSettings("data"),
         },
         { type: "separator" },
         {
-          label: "Hide This Message",
+          label: "不再显示此消息",
           leftSlot: <Icon icon="eye_closed" />,
           async onSelect() {
             const confirmed = await showConfirm({
               id: "hide-sync-menu-prompt",
-              title: "Hide Setup Message",
-              description: "You can configure filesystem sync or Git it in the workspace settings",
+              title: "隐藏设置提示",
+              description: "您可以在工作区设置中配置文件系统同步或 Git",
             });
             if (confirmed) {
               await setHidden((prev) => ({ ...prev, [workspaceMeta.workspaceId]: true }));
@@ -593,7 +592,7 @@ function SetupSyncDropdown({ workspaceMeta }: { workspaceMeta: WorkspaceMeta }) 
       <GitMenuButton>
         <div className="text-sm text-text-subtle grid grid-cols-[auto_minmax(0,1fr)] items-center gap-2">
           <Icon icon="wrench" />
-          <div className="truncate">Setup FS Sync or Git</div>
+          <div className="truncate">设置文件系统同步或 Git</div>
         </div>
       </GitMenuButton>
     </Dropdown>
@@ -616,7 +615,7 @@ function SetupGitDropdown({
     return null;
   }
 
-  const banner = <Banner color="info">Initialize local repo to start versioning with Git</Banner>;
+  const banner = <Banner color="info">初始化本地仓库以开始 Git 版本控制</Banner>;
 
   return (
     <Dropdown
@@ -624,19 +623,19 @@ function SetupGitDropdown({
       items={[
         { type: "content", label: banner },
         {
-          label: "Initialize Git Repo",
+          label: "初始化 Git 仓库",
           leftSlot: <Icon icon="magic_wand" />,
           onSelect: initRepo,
         },
         { type: "separator" },
         {
-          label: "Hide This Message",
+          label: "不再显示此消息",
           leftSlot: <Icon icon="eye_closed" />,
           async onSelect() {
             const confirmed = await showConfirm({
               id: "hide-git-init-prompt",
-              title: "Hide Git Setup",
-              description: "You can initialize a git repo outside of Yaak to bring this back",
+              title: "隐藏 Git 设置",
+              description: "您可以在 Yaak 外部初始化一个 Git 仓库来恢复它",
             });
             if (confirmed) {
               await setHidden((prev) => ({ ...prev, [workspaceId]: true }));
@@ -648,7 +647,7 @@ function SetupGitDropdown({
       <GitMenuButton>
         <div className="text-sm text-text-subtle grid grid-cols-[auto_minmax(0,1fr)] items-center gap-2">
           <Icon icon="folder_git" />
-          <div className="truncate">Setup Git</div>
+          <div className="truncate">设置 Git</div>
         </div>
       </GitMenuButton>
     </Dropdown>

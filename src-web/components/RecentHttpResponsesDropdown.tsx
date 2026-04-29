@@ -3,7 +3,6 @@ import { deleteModel } from "@yaakapp-internal/models";
 import { useCopyHttpResponse } from "../hooks/useCopyHttpResponse";
 import { useDeleteHttpResponses } from "../hooks/useDeleteHttpResponses";
 import { useSaveResponse } from "../hooks/useSaveResponse";
-import { pluralize } from "../lib/pluralize";
 import { Dropdown } from "./core/Dropdown";
 import { HttpStatusTag } from "./core/HttpStatusTag";
 import { Icon } from "./core/Icon";
@@ -31,34 +30,34 @@ export const RecentHttpResponsesDropdown = function ResponsePane({
     <Dropdown
       items={[
         {
-          label: "Save to File",
+          label: "保存到文件",
           onSelect: saveResponse.mutate,
           leftSlot: <Icon icon="save" />,
           hidden: responses.length === 0 || !!activeResponse.error,
           disabled: activeResponse.state !== "closed" && activeResponse.status >= 100,
         },
         {
-          label: "Copy Body",
+          label: "复制响应体",
           onSelect: copyResponse.mutate,
           leftSlot: <Icon icon="copy" />,
           hidden: responses.length === 0 || !!activeResponse.error,
           disabled: activeResponse.state !== "closed" && activeResponse.status >= 100,
         },
         {
-          label: "Delete",
+          label: "删除",
           leftSlot: <Icon icon="trash" />,
           onSelect: () => deleteModel(activeResponse),
         },
         {
-          label: "Unpin Response",
+          label: "取消固定响应",
           onSelect: () => onPinnedResponseId(activeResponse.id),
           leftSlot: <Icon icon="unpin" />,
           hidden: latestResponseId === activeResponse.id,
           disabled: responses.length === 0,
         },
-        { type: "separator", label: "History" },
+        { type: "separator", label: "历史记录" },
         {
-          label: `Delete ${responses.length} ${pluralize("Response", responses.length)}`,
+          label: `删除 ${responses.length} 条响应`,
           onSelect: deleteAllResponses.mutate,
           hidden: responses.length === 0,
           disabled: responses.length === 0,
@@ -78,7 +77,7 @@ export const RecentHttpResponsesDropdown = function ResponsePane({
       ]}
     >
       <IconButton
-        title="Show response history"
+        title="显示响应历史"
         icon={activeResponse?.id === latestResponseId ? "history" : "pin"}
         className="m-0.5 text-text-subtle"
         size="sm"

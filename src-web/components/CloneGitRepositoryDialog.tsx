@@ -39,7 +39,7 @@ export function CloneGitRepositoryDialog({ hide }: Props) {
 
   const handleSelectDirectory = async () => {
     const dir = await open({
-      title: "Select Directory",
+      title: "选择目录",
       directory: true,
       multiple: false,
     });
@@ -60,9 +60,7 @@ export function CloneGitRepositoryDialog({ hide }: Props) {
       const result = await gitClone(url, directory, promptCredentials);
 
       if (result.type === "needs_credentials") {
-        setError(
-          result.error ?? "Authentication failed. Please check your credentials and try again.",
-        );
+        setError(result.error ?? "身份验证失败。请检查凭据后重试。");
         return;
       }
 
@@ -74,7 +72,7 @@ export function CloneGitRepositoryDialog({ hide }: Props) {
       setError(String(err));
       showErrorToast({
         id: "git-clone-error",
-        title: "Clone Failed",
+        title: "克隆失败",
         message: String(err),
       });
     } finally {
@@ -92,14 +90,14 @@ export function CloneGitRepositoryDialog({ hide }: Props) {
 
       <PlainInput
         required
-        label="Repository URL"
+        label="仓库 URL"
         placeholder="https://github.com/user/repo.git"
         defaultValue={url}
         onChange={setUrl}
       />
 
       <PlainInput
-        label="Directory"
+        label="目录"
         placeholder={appInfo.defaultProjectDir}
         defaultValue={directory}
         onChange={setDirectoryOverride}
@@ -108,7 +106,7 @@ export function CloneGitRepositoryDialog({ hide }: Props) {
             size="xs"
             className="mr-0.5 !h-auto my-0.5"
             icon="folder"
-            title="Browse"
+            title="浏览"
             onClick={handleSelectDirectory}
           />
         }
@@ -117,13 +115,13 @@ export function CloneGitRepositoryDialog({ hide }: Props) {
       <Checkbox
         checked={hasSubdirectory}
         onChange={setHasSubdirectory}
-        title="Workspace is in a subdirectory"
-        help="Enable if the Yaak workspace files are not at the root of the repository"
+        title="工作区位于子目录"
+        help="若 Yaak 工作区文件不在仓库根目录，请启用此项"
       />
 
       {hasSubdirectory && (
         <PlainInput
-          label="Subdirectory"
+          label="子目录"
           placeholder="path/to/workspace"
           defaultValue={subdirectory}
           onChange={setSubdirectory}
@@ -137,7 +135,7 @@ export function CloneGitRepositoryDialog({ hide }: Props) {
         disabled={!url || !directory || isCloning}
         isLoading={isCloning}
       >
-        {isCloning ? "Cloning..." : "Clone Repository"}
+        {isCloning ? "克隆中..." : "克隆仓库"}
       </Button>
     </VStack>
   );

@@ -69,7 +69,7 @@ export function convertPostman(contents: string): ImportPluginResponse | undefin
   const environment: ExportResources["environments"][0] = {
     model: "environment",
     id: generateId("environment"),
-    name: "Global Variables",
+    name: "全局变量",
     workspaceId: workspace.id,
     parentModel: "workspace",
     parentId: null,

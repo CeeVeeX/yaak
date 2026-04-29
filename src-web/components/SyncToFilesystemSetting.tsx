@@ -23,7 +23,7 @@ export function SyncToFilesystemSetting({
     <VStack className="w-full my-2" space={3}>
       {syncDir && (
         <Banner color="notice" className="flex flex-col gap-1.5">
-          <p>Directory is not empty. Do you want to open it instead?</p>
+          <p>目录不为空。是否改为打开它？</p>
           <div>
             <Button
               variant="border"
@@ -35,7 +35,7 @@ export function SyncToFilesystemSetting({
                 onCreateNewWorkspace();
               }}
             >
-              Open Workspace
+              打开工作区
             </Button>
           </div>
         </Banner>
@@ -43,10 +43,10 @@ export function SyncToFilesystemSetting({
 
       <SelectFile
         directory
-        label="Local directory sync"
+        label="本地文件夹同步"
         size="xs"
-        noun="Directory"
-        help="Sync data to a folder for backup and Git integration."
+        noun="文件夹"
+        help="将数据同步到文件夹以进行备份和 Git 集成"
         filePath={value.filePath}
         onChange={async ({ filePath }) => {
           if (filePath != null) {
@@ -66,7 +66,7 @@ export function SyncToFilesystemSetting({
         <Checkbox
           checked={value.initGit}
           onChange={(initGit) => onChange({ ...value, initGit })}
-          title="Initialize Git Repo"
+          title="初始化 Git 仓库"
         />
       )}
     </VStack>

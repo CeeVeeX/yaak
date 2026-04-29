@@ -16,7 +16,7 @@
       {
         "model": "environment",
         "id": "GENERATE_ID::ENVIRONMENT_2",
-        "name": "Global Variables",
+        "name": "全局变量",
         "workspaceId": "GENERATE_ID::WORKSPACE_2",
         "parentModel": "workspace",
         "parentId": null,

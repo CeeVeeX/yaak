@@ -15,13 +15,13 @@ export const CookieDialog = ({ cookieJarId }: Props) => {
   const cookieJar = cookieJars?.find((c) => c.id === cookieJarId);
 
   if (cookieJar == null) {
-    return <div>No cookie jar selected</div>;
+    return <div>未选择 Cookie Jar</div>;
   }
 
   if (cookieJar.cookies.length === 0) {
     return (
       <Banner>
-        Cookies will appear when a response contains the <InlineCode>Set-Cookie</InlineCode> header
+        当响应包含 <InlineCode>Set-Cookie</InlineCode> 头时，Cookies 会显示在这里
       </Banner>
     );
   }
@@ -31,7 +31,7 @@ export const CookieDialog = ({ cookieJarId }: Props) => {
       <table className="w-full text-sm mb-auto min-w-full max-w-full divide-y divide-surface-highlight">
         <thead>
           <tr>
-            <th className="py-2 text-left">Domain</th>
+            <th className="py-2 text-left">域名</th>
             <th className="py-2 text-left pl-4">Cookie</th>
             <th className="py-2 pl-4" />
           </tr>
@@ -50,7 +50,7 @@ export const CookieDialog = ({ cookieJarId }: Props) => {
                   icon="trash"
                   size="xs"
                   iconSize="sm"
-                  title="Delete"
+                  title="删除"
                   className="ml-auto"
                   onClick={() =>
                     patchModel(cookieJar, {

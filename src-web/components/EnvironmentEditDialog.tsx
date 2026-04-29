@@ -64,10 +64,7 @@ export function EnvironmentEditDialog({ initialEnvironmentId, setRef }: Props) {
         <div className="grid grid-rows-[auto_minmax(0,1fr)]">
           {baseEnvironments.length > 1 ? (
             <div className="p-3">
-              <Banner color="notice">
-                There are multiple base environments for this workspace. Please delete the
-                environments you no longer need.
-              </Banner>
+              <Banner color="notice">此工作区有多个基础环境。请删除您不再需要的环境。</Banner>
             </div>
           ) : (
             <span />
@@ -75,7 +72,7 @@ export function EnvironmentEditDialog({ initialEnvironmentId, setRef }: Props) {
           {selectedEnvironment == null ? (
             <div className="p-3 mt-10">
               <Banner color="danger">
-                Failed to find selected environment <InlineCode>{selectedEnvironmentId}</InlineCode>
+                找不到所选的环境 <InlineCode>{selectedEnvironmentId}</InlineCode>
               </Banner>
             </div>
           ) : (
@@ -97,7 +94,7 @@ const sharableTooltip = (
     tabIndex={-1}
     icon="eye"
     iconSize="sm"
-    content="This environment will be included in Directory Sync and data exports"
+    content="此环境将被包含在目录同步和数据导出中"
   />
 );
 
@@ -173,7 +170,7 @@ function EnvironmentEditDialogSidebar({
     (items: TreeModel[]): ContextMenuProps["items"] => {
       const environment = items[0];
       const addEnvironmentItem: DropdownItem = {
-        label: "Create Sub Environment",
+        label: "新建子环境",
         leftSlot: <Icon icon="plus" />,
         onSelect: async () => {
           await createSubEnvironment();
@@ -191,7 +188,7 @@ function EnvironmentEditDialogSidebar({
 
       const menuItems: DropdownItem[] = [
         {
-          label: "Rename",
+          label: "重命名",
           leftSlot: <Icon icon="pencil" />,
           hidden: isBaseEnvironment(environment) || !singleEnvironment,
           hotKeyAction: "sidebar.selected.rename",
@@ -205,7 +202,7 @@ function EnvironmentEditDialogSidebar({
           },
         },
         {
-          label: "Duplicate",
+          label: "复制",
           leftSlot: <Icon icon="copy" />,
           hidden: isBaseEnvironment(environment),
           hotKeyAction: "sidebar.selected.duplicate",
@@ -213,13 +210,13 @@ function EnvironmentEditDialogSidebar({
           onSelect: () => actions["sidebar.selected.duplicate"].cb(items),
         },
         {
-          label: environment.color ? "Change Color" : "Assign Color",
+          label: environment.color ? "更改颜色" : "设置颜色",
           leftSlot: <Icon icon="palette" />,
           hidden: isBaseEnvironment(environment) || !singleEnvironment,
           onSelect: async () => showColorPicker(environment),
         },
         {
-          label: `Make ${environment.public ? "Private" : "Sharable"}`,
+          label: `设为${environment.public ? "私有" : "公共"}`,
           leftSlot: <Icon icon={environment.public ? "eye_closed" : "eye"} />,
           rightSlot: <EnvironmentSharableTooltip />,
           hidden: items.length > 1,
@@ -229,7 +226,7 @@ function EnvironmentEditDialogSidebar({
         },
         {
           color: "danger",
-          label: "Delete",
+          label: "删除",
           hotKeyAction: "sidebar.selected.delete",
           hotKeyLabelOnly: true,
           hidden: !canDeleteEnvironment,
