@@ -52,10 +52,7 @@ import { deepEqualAtom } from "../lib/atoms";
 import { showConfirm } from "../lib/confirm";
 import { deleteModelWithConfirm } from "../lib/deleteModelWithConfirm";
 import { showDialog } from "../lib/dialog";
-import {
-  gitWorktreeStatusByModelIdAtom,
-  gitWorktreeStatusFamily,
-} from "../lib/gitWorktreeStatus";
+import { gitWorktreeStatusByModelIdAtom, gitWorktreeStatusFamily } from "../lib/gitWorktreeStatus";
 import { jotaiStore } from "../lib/jotai";
 import { resolvedModelName } from "../lib/resolvedModelName";
 import { isSidebarFocused } from "../lib/scopes";
@@ -403,13 +400,13 @@ function Sidebar({ className }: { className?: string }) {
 
       const initialItems: ContextMenuProps["items"] = [
         {
-          label: "Folder Settings",
+          label: "文件夹设置",
           hidden: !(items.length === 1 && child.model === "folder"),
           leftSlot: <Icon icon="folder_cog" />,
           onSelect: () => openFolderSettings(child.id),
         },
         {
-          label: "Send",
+          label: "发送",
           hotKeyAction: "request.send",
           hotKeyLabelOnly: true,
           hidden: !onlyHttpRequests,
@@ -481,7 +478,7 @@ function Sidebar({ className }: { className?: string }) {
         ...gitItems,
         { type: "separator", hidden: gitItems.length === 0 },
         {
-          label: "Rename",
+          label: "重命名",
           leftSlot: <Icon icon="pencil" />,
           hidden: items.length > 1,
           hotKeyAction: "sidebar.selected.rename",
@@ -489,14 +486,14 @@ function Sidebar({ className }: { className?: string }) {
           onSelect: () => handleRenameSelected(items),
         },
         {
-          label: "Duplicate",
+          label: "复制",
           hotKeyAction: "model.duplicate",
           hotKeyLabelOnly: true, // Would trigger for every request (bad)
           leftSlot: <Icon icon="copy" />,
           onSelect: () => handleDuplicateSelected(items),
         },
         {
-          label: items.length <= 1 ? "Move" : `Move ${requestItems.length} Requests`,
+          label: items.length <= 1 ? "移动" : `移动 ${requestItems.length} 个请求`,
           hotKeyAction: "sidebar.selected.move",
           hotKeyLabelOnly: true,
           leftSlot: <Icon icon="arrow_right_circle" />,
@@ -508,7 +505,7 @@ function Sidebar({ className }: { className?: string }) {
         },
         {
           color: "danger",
-          label: "Delete",
+          label: "删除",
           hotKeyAction: "sidebar.selected.delete",
           hotKeyLabelOnly: true,
           leftSlot: <Icon icon="trash" />,
@@ -567,7 +564,7 @@ function Sidebar({ className }: { className?: string }) {
               size="sm"
               label="filter"
               language={null} // Explicitly disable
-              placeholder="Search"
+              placeholder="搜索"
               onChange={handleFilterChange}
               defaultValue={filterText.text}
               forceUpdateKey={filterText.key}
@@ -922,7 +919,10 @@ const sidebarGitStatusByModelIdAtom = atom<Record<string, GitStatus>>((get) => {
 
 const sidebarGitStatusFamily = atomFamily(
   (modelId: string) =>
-    selectAtom(sidebarGitStatusByModelIdAtom, (statusByModelId) => statusByModelId[modelId] ?? null),
+    selectAtom(
+      sidebarGitStatusByModelIdAtom,
+      (statusByModelId) => statusByModelId[modelId] ?? null,
+    ),
   Object.is,
 );
 

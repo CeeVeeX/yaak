@@ -30,10 +30,10 @@ export function HttpStatusTagRaw({
   const statusN = typeof status === "number" ? status : parseInt(status, 10);
 
   if (state === "initialized") {
-    label = short ? "CONN" : "CONNECTING";
+    label = short ? "连接中" : "连接中";
     colorClass = "text-text-subtle";
   } else if (statusN < 100) {
-    label = short ? "ERR" : "ERROR";
+    label = short ? "错误" : "错误";
     colorClass = "text-danger";
   } else if (statusN < 200) {
     colorClass = "text-info";

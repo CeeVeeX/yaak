@@ -304,8 +304,8 @@ function PluginSearch() {
       <HStack space={1.5}>
         <PlainInput
           hideLabel
-          label="Search"
-          placeholder="Search plugins..."
+          label="搜索"
+          placeholder="搜索插件..."
           onChange={setQuery}
           defaultValue={query}
         />

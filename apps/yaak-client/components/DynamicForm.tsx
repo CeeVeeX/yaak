@@ -604,7 +604,7 @@ function KeyValueArg({
         onChange={handleChange}
         stateKey={stateKey}
         namePlaceholder="name"
-        valuePlaceholder="value"
+        valuePlaceholder="值"
         noScroll
       />
     </div>

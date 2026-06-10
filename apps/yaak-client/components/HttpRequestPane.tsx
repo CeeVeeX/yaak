@@ -165,21 +165,21 @@ export function HttpRequestPane({ style, fullHeight, className, activeRequest }:
         options: {
           value: activeRequest.bodyType,
           items: [
-            { type: "separator", label: "Form Data" },
-            { label: "Url Encoded", value: BODY_TYPE_FORM_URLENCODED },
+            { type: "separator", label: "表单数据" },
+            { label: "URL 编码", value: BODY_TYPE_FORM_URLENCODED },
             { label: "Multi-Part", value: BODY_TYPE_FORM_MULTIPART },
-            { type: "separator", label: "Text Content" },
+            { type: "separator", label: "文本内容" },
             { label: "GraphQL", value: BODY_TYPE_GRAPHQL },
             { label: "JSON", value: BODY_TYPE_JSON },
             { label: "XML", value: BODY_TYPE_XML },
             {
-              label: "Other",
+              label: "其他",
               value: BODY_TYPE_OTHER,
               shortLabel: nameOfContentTypeOr(contentType, "Other"),
             },
-            { type: "separator", label: "Other" },
-            { label: "Binary File", value: BODY_TYPE_BINARY },
-            { label: "No Body", shortLabel: "Body", value: BODY_TYPE_NONE },
+            { type: "separator", label: "其他" },
+            { label: "二进制文件", value: BODY_TYPE_BINARY },
+            { label: "无内容", shortLabel: "Body", value: BODY_TYPE_NONE },
           ],
           onChange: async (bodyType) => {
             if (bodyType === activeRequest.bodyType) return;
@@ -233,18 +233,18 @@ export function HttpRequestPane({ style, fullHeight, className, activeRequest }:
       {
         value: TAB_PARAMS,
         rightSlot: <CountBadge count={urlParameterPairs.length} />,
-        label: "Params",
+        label: "参数",
       },
       ...headersTab,
       ...authTab,
       {
         value: TAB_SETTINGS,
-        label: "Settings",
+        label: "设置",
         rightSlot: <CountBadge count={numSettingsOverrides} />,
       },
       {
         value: TAB_DESCRIPTION,
-        label: "Info",
+        label: "信息",
       },
     ],
     [
@@ -446,7 +446,7 @@ export function HttpRequestPane({ style, fullHeight, className, activeRequest }:
                     stateKey={`other.${activeRequest.id}`}
                   />
                 ) : (
-                  <EmptyStateText>No Body</EmptyStateText>
+                  <EmptyStateText>这里没有任何内容。。。</EmptyStateText>
                 )}
               </ConfirmLargeRequestBody>
             </TabContent>

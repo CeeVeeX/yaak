@@ -61,8 +61,8 @@ export const plugin: PluginDefinition = {
           {
             type: "editor",
             name: "headers",
-            label: "JWT Header",
-            description: "Merged with auto-generated header fields like alg (e.g., kid)",
+            label: "JWT 标头",
+            description: "与自动生成的头部字段（如 alg、kid）合并",
             language: "json",
             defaultValue: "{}",
             placeholder: "{ }",

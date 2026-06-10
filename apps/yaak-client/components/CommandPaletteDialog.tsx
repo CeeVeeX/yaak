@@ -437,8 +437,8 @@ export function CommandPaletteDialog({ onClose }: { onClose: () => void }) {
             </div>
           }
           name="command"
-          label="Command"
-          placeholder="Search or type a command"
+          label="命令"
+          placeholder="搜索或输入命令"
           className="font-sans !text-base"
           defaultValue={command}
           onChange={handleSetCommand}

@@ -193,7 +193,7 @@ function EnvironmentEditDialogSidebar({
     (items: TreeModel[]): ContextMenuProps["items"] => {
       const environment = items[0];
       const addEnvironmentItem: DropdownItem = {
-        label: "Create Sub Environment",
+        label: "创建子环境",
         leftSlot: <Icon icon="plus" />,
         onSelect: async () => {
           await createSubEnvironment();
@@ -211,7 +211,7 @@ function EnvironmentEditDialogSidebar({
 
       const menuItems: DropdownItem[] = [
         {
-          label: "Rename",
+          label: "重命名",
           leftSlot: <Icon icon="pencil" />,
           hidden: isBaseEnvironment(environment) || !singleEnvironment,
           hotKeyAction: "sidebar.selected.rename",
@@ -223,7 +223,7 @@ function EnvironmentEditDialogSidebar({
           },
         },
         {
-          label: "Duplicate",
+          label: "复制",
           leftSlot: <Icon icon="copy" />,
           hidden: isBaseEnvironment(environment),
           hotKeyAction: "sidebar.selected.duplicate",
@@ -231,13 +231,13 @@ function EnvironmentEditDialogSidebar({
           onSelect: () => handleDuplicateSelected(items),
         },
         {
-          label: environment.color ? "Change Color" : "Assign Color",
+          label: environment.color ? "改变颜色" : "指定颜色",
           leftSlot: <Icon icon="palette" />,
           hidden: isBaseEnvironment(environment) || !singleEnvironment,
           onSelect: async () => showColorPicker(environment),
         },
         {
-          label: `Make ${environment.public ? "Private" : "Sharable"}`,
+          label: `设为 ${environment.public ? "私有" : "共享"}`,
           leftSlot: <Icon icon={environment.public ? "eye_closed" : "eye"} />,
           rightSlot: <EnvironmentSharableTooltip />,
           hidden: items.length > 1,
@@ -247,7 +247,7 @@ function EnvironmentEditDialogSidebar({
         },
         {
           color: "danger",
-          label: "Delete",
+          label: "删除",
           hotKeyAction: "sidebar.selected.delete",
           hotKeyLabelOnly: true,
           hidden: !canDeleteEnvironment,

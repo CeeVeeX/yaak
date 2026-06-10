@@ -170,7 +170,7 @@ function InitializedTemplateFunctionDialog({
         {name === "secure" ? (
           <PlainInput
             required
-            label="Value"
+            label="值"
             name="value"
             type="password"
             placeholder="••••••••••••"

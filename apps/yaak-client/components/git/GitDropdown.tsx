@@ -579,8 +579,7 @@ function SetupSyncDropdown({ workspaceMeta }: { workspaceMeta: WorkspaceMeta }) 
 
   const banner = (
     <Banner color="info">
-      When enabled, workspace data syncs to the chosen folder as text files, ideal for backup and
-      Git collaboration.
+      启用后，工作区数据会以文本文件形式同步至所选文件夹，适合用于备份及 Git 协作。
     </Banner>
   );
 
@@ -594,13 +593,13 @@ function SetupSyncDropdown({ workspaceMeta }: { workspaceMeta: WorkspaceMeta }) 
         },
         {
           color: "success",
-          label: "Open Workspace Settings",
+          label: "打开工作区设置",
           leftSlot: <Icon icon="settings" />,
           onSelect: () => openWorkspaceSettings("settings"),
         },
         { type: "separator" },
         {
-          label: "Hide This Message",
+          label: "隐藏此消息",
           leftSlot: <Icon icon="eye_closed" />,
           async onSelect() {
             const confirmed = await showConfirm({
@@ -618,7 +617,7 @@ function SetupSyncDropdown({ workspaceMeta }: { workspaceMeta: WorkspaceMeta }) 
       <GitMenuButton>
         <div className="text-sm text-text-subtle grid grid-cols-[auto_minmax(0,1fr)] items-center gap-2">
           <Icon icon="wrench" />
-          <div className="truncate">Setup FS Sync or Git</div>
+          <div className="truncate">配置文件系统同步 或 Git（版本控制）</div>
         </div>
       </GitMenuButton>
     </Dropdown>

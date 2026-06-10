@@ -798,8 +798,8 @@ function GqlSchemaSearch({
         defaultValue={value}
         placeholder={
           focused
-            ? `Search ${currentItem != null && "name" in currentItem.type ? currentItem.type.name : "Schema"}`
-            : "Search"
+            ? `搜索 ${currentItem != null && "name" in currentItem.type ? currentItem.type.name : "Schema"}`
+            : "搜索"
         }
         leftSlot={
           <div className="w-10 flex justify-center items-center">

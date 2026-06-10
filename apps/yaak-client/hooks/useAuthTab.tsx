@@ -49,11 +49,11 @@ export function useAuthTab<T extends string>(tabValue: T, model: AuthenticatedMo
                   />
                 </HStack>
               ) : (
-                "Auth"
+                "认证"
               ),
             value: null,
           },
-          { label: "No Auth", shortLabel: "No Auth", value: "none" },
+          { label: "无需认证", shortLabel: "无需认证", value: "none" },
         ],
         itemsAfter: (() => {
           const actions: (
@@ -69,9 +69,9 @@ export function useAuthTab<T extends string>(tabValue: T, model: AuthenticatedMo
             (parentModel.authenticationType == null || parentModel.authenticationType === "none")
           ) {
             actions.push(
-              { type: "separator", label: "Actions" },
+              { type: "separator", label: "操作" },
               {
-                label: `Promote to ${capitalize(parentModel.model)}`,
+                label: `提升至 ${capitalize(parentModel.model)}`,
                 leftSlot: (
                   <Icon
                     icon={parentModel.model === "workspace" ? "corner_right_up" : "folder_up"}

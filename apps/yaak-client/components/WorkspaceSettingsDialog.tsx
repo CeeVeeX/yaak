@@ -1,5 +1,5 @@
 import { patchModel, workspaceMetasAtom, workspacesAtom } from "@yaakapp-internal/models";
-import { Banner, HStack, InlineCode, VStack } from "@yaakapp-internal/ui";
+import { Banner, HStack, InlineCode } from "@yaakapp-internal/ui";
 import { useAtomValue } from "jotai";
 import { useAuthTab } from "../hooks/useAuthTab";
 import { useHeadersTab } from "../hooks/useHeadersTab";
@@ -72,10 +72,10 @@ export function WorkspaceSettingsDialog({ workspaceId, hide, tab }: Props) {
       tabListClassName="pl-4"
       addBorders
       tabs={[
-        { value: TAB_GENERAL, label: "Workspace" },
+        { value: TAB_GENERAL, label: "工作区" },
         {
           value: TAB_SETTINGS,
-          label: "Settings",
+          label: "设置",
         },
         ...headersTab,
         ...authTab,

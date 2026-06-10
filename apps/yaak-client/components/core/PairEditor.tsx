@@ -519,12 +519,12 @@ export function PairEditorRow({
   const defaultItems = useMemo(
     (): DropdownItem[] => [
       {
-        label: "Edit Multi-line",
+        label: "编辑多行",
         onSelect: handleEditMultiLineValue,
         hidden: !allowMultilineValues,
       },
       {
-        label: "Delete",
+        label: "删除",
         onSelect: handleDelete,
         color: "danger",
       },
@@ -652,7 +652,7 @@ export function PairEditorRow({
               onChange={handleChangeValueText}
               onFocus={handleFocusValue}
               type={isLast ? "text" : typeof valueType === "function" ? valueType(pair) : valueType}
-              placeholder={valuePlaceholder ?? "value"}
+              placeholder={valuePlaceholder ?? "值"}
               autocomplete={valueAutocomplete?.(pair.name)}
               autocompleteFunctions={valueAutocompleteFunctions}
               autocompleteVariables={valueAutocompleteVariablesFiltered}

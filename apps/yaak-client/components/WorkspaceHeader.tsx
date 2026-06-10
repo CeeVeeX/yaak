@@ -59,7 +59,7 @@ export const WorkspaceHeader = memo(function WorkspaceHeader({
         <ImportCurlButton />
         {showEncryptionSetup ? (
           <PillButton color="danger" onClick={setupOrConfigureEncryption}>
-            Enter Encryption Key
+            输入加密密钥
           </PillButton>
         ) : (
           <LicenseBadge />
@@ -81,7 +81,7 @@ export const WorkspaceHeader = memo(function WorkspaceHeader({
         />
         <IconButton
           icon="search"
-          title="Search or execute a command"
+          title="搜索或执行命令"
           size="sm"
           hotkeyAction="command_palette.toggle"
           iconColor="secondary"

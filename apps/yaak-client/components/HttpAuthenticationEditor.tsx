@@ -110,9 +110,9 @@ export function HttpAuthenticationEditor({ model }: Props) {
                   : "__DYNAMIC__"
             }
             options={[
-              { label: "Enabled", value: "__TRUE__" },
-              { label: "Disabled", value: "__FALSE__" },
-              { label: "Enabled when...", value: "__DYNAMIC__" },
+              { label: "启用", value: "__TRUE__" },
+              { label: "禁用", value: "__FALSE__" },
+              { label: "在以下情况下启用", value: "__DYNAMIC__" },
             ]}
             onChange={async (enabled) => {
               let disabled: boolean | string;
@@ -191,14 +191,14 @@ function AuthenticationDisabledInput({
     <Input
       size="sm"
       className={className}
-      label="Dynamic Disabled"
+      label="动态禁用"
       hideLabel
       defaultValue={value}
-      placeholder="Enabled when this renders a non-empty value"
+      placeholder="当此处非空值时启用"
       rightSlot={
         <div className="px-1 flex items-center">
           <div className="rounded-full bg-surface-highlight text-xs px-1.5 py-0.5 text-text-subtle whitespace-nowrap">
-            {rendered.isPending ? "loading" : rendered.data ? "enabled" : "disabled"}
+            {rendered.isPending ? "loading" : rendered.data ? "启用" : "禁用"}
           </div>
         </div>
       }

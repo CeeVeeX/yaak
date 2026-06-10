@@ -37,7 +37,7 @@ export function twig({
       value: v.variable.value,
       type: "variable",
       label: v.variable.name,
-      description: `Inherited from ${v.source}`,
+      description: `从 ${v.source} 继承`,
       onClick: (rawTag: string, startPos: number) => onClickVariable(v, rawTag, startPos),
     })) ?? [];
 
