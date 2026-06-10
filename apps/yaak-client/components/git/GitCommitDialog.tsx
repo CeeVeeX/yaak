@@ -8,7 +8,7 @@ import type {
   WebsocketRequest,
   Workspace,
 } from "@yaakapp-internal/models";
-import { Banner, HStack, Icon, IconButton, InlineCode, SplitLayout } from "@yaakapp-internal/ui";
+import { Banner, HStack, Icon, InlineCode, SplitLayout } from "@yaakapp-internal/ui";
 import classNames from "classnames";
 import { useCallback, useMemo, useState } from "react";
 import { modelToYaml } from "../../lib/diffYaml";
@@ -41,10 +41,7 @@ interface CommitTreeNode {
 
 export function GitCommitDialog({ syncDir, onDone, workspace }: Props) {
   const callbacks = useGitCallbacks(syncDir);
-  const [{ status }, { commit, commitAndPush, add, unstage, restore }] = useGit(
-    syncDir,
-    callbacks,
-  );
+  const [{ status }, { commit, commitAndPush, add, unstage, restore }] = useGit(syncDir, callbacks);
   const [isPushing, setIsPushing] = useState(false);
   const [commitError, setCommitError] = useState<string | null>(null);
   const [message, setMessage] = useState<string>("");
@@ -509,13 +506,11 @@ function DiffPanel({
           size="2xs"
           variant="border"
           onClick={() => onDiscardChanges(entry)}
-        >Discard Changes</Button>
+        >
+          Discard Changes
+        </Button>
       </div>
-      <DiffViewer
-        original={prevYaml ?? ""}
-        modified={nextYaml ?? ""}
-        className="flex-1 min-h-0"
-      />
+      <DiffViewer original={prevYaml ?? ""} modified={nextYaml ?? ""} className="flex-1 min-h-0" />
     </div>
   );
 }

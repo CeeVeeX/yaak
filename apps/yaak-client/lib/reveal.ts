@@ -5,5 +5,5 @@ export const revealInFinderText =
   os === "macos"
     ? "Reveal in Finder"
     : os === "windows"
-      ? "Show in Explorer"
-      : "Show in File Manager";
+      ? "在资源管理器中打开"
+      : "在文件管理器中打开";

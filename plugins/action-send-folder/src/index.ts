@@ -1,10 +1,10 @@
-import type { PluginDefinition } from "@yaakapp/api";
+import type { Icon, PluginDefinition } from "@yaakapp/api";
 
 export const plugin: PluginDefinition = {
   folderActions: [
     {
       label: "Send All",
-      icon: "send_horizontal",
+      icon: "send_horizontal" as Icon,
       async onSelect(ctx, args) {
         const targetFolder = args.folder;
 
@@ -83,7 +83,7 @@ export const plugin: PluginDefinition = {
         if (errorCount === 0) {
           await ctx.toast.show({
             message: `Sent ${successCount} request${successCount !== 1 ? "s" : ""}`,
-            icon: "send_horizontal",
+            icon: "send_horizontal" as Icon,
             color: "success",
           });
         } else {

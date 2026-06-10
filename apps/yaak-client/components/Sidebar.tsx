@@ -586,7 +586,7 @@ function Sidebar({ className }: { className?: string }) {
             <Dropdown
               items={[
                 {
-                  label: "Focus Active Request",
+                  label: "定位当前请求",
                   leftSlot: <Icon icon="crosshair" />,
                   onSelect: () => {
                     const activeId = jotaiStore.get(activeIdAtom);
@@ -610,14 +610,14 @@ function Sidebar({ className }: { className?: string }) {
                   },
                 },
                 {
-                  label: "Expand All Folders",
+                  label: "展开所有文件夹",
                   leftSlot: <Icon icon="chevrons_up_down" />,
                   onSelect: () => jotaiStore.set(collapsedFamily(treeId), {}),
                   hotKeyAction: "sidebar.expand_all",
                   hotKeyLabelOnly: true,
                 },
                 {
-                  label: "Collapse All Folders",
+                  label: "折叠所有文件夹",
                   leftSlot: <Icon icon="chevrons_down_up" />,
                   onSelect: () => {
                     if (tree == null) return;
@@ -700,7 +700,7 @@ function getGitContextMenuItems({
 
   return [
     {
-      label: "View History",
+      label: "查看历史",
       leftSlot: <Icon icon="history" />,
       hidden: historyPath == null,
       onSelect: () => {
@@ -716,7 +716,7 @@ function getGitContextMenuItems({
       },
     },
     {
-      label: "Restore Changes",
+      label: "恢复更改",
       leftSlot: <Icon icon="rotate_ccw" />,
       hidden: gitStatusEntries.length === 0,
       async onSelect() {

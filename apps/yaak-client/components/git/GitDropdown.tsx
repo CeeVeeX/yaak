@@ -119,7 +119,7 @@ function SyncDropdownWithSyncDir({ syncDir }: { syncDir: string }) {
 
     return [
       {
-        label: "View History...",
+        label: "查看历史...",
         leftSlot: <Icon icon="history" />,
         onSelect: async () => {
           showDialog({
@@ -132,13 +132,13 @@ function SyncDropdownWithSyncDir({ syncDir }: { syncDir: string }) {
         },
       },
       {
-        label: "Manage Remotes...",
+        label: "管理远程...",
         leftSlot: <Icon icon="hard_drive_download" />,
         onSelect: () => GitRemotesDialog.show(syncDir),
       },
       { type: "separator" },
       {
-        label: "New Branch...",
+        label: "新建分支...",
         leftSlot: <Icon icon="git_branch_plus" />,
         async onSelect() {
           const name = await showPrompt({
@@ -166,7 +166,7 @@ function SyncDropdownWithSyncDir({ syncDir }: { syncDir: string }) {
       },
       { type: "separator" },
       {
-        label: "Push",
+        label: "推送",
         leftSlot: <Icon icon="arrow_up_from_line" />,
         waitForOnSelect: true,
         async onSelect() {
@@ -184,7 +184,7 @@ function SyncDropdownWithSyncDir({ syncDir }: { syncDir: string }) {
         },
       },
       {
-        label: "Pull",
+        label: "拉取",
         leftSlot: <Icon icon="arrow_down_to_line" />,
         waitForOnSelect: true,
         async onSelect() {
@@ -202,7 +202,7 @@ function SyncDropdownWithSyncDir({ syncDir }: { syncDir: string }) {
         },
       },
       {
-        label: "Commit...",
+        label: "提交...",
 
         leftSlot: <Icon icon="git_commit_vertical" />,
         onSelect() {
@@ -218,7 +218,7 @@ function SyncDropdownWithSyncDir({ syncDir }: { syncDir: string }) {
         },
       },
       {
-        label: "Reset Changes",
+        label: "重置更改",
         hidden: !hasChanges,
         leftSlot: <Icon icon="rotate_ccw" />,
         color: "danger",

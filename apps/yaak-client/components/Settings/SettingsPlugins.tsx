@@ -59,14 +59,14 @@ export function SettingsPlugins({ defaultSubtab }: SettingsPluginsProps) {
         addBorders
         tabListClassName="px-6 pt-2"
         tabs={[
-          { label: "Discover", value: "search" },
+          { label: "探索", value: "search" },
           {
-            label: "Installed",
+            label: "已安装",
             value: "installed",
             rightSlot: <CountBadge count={installedPlugins.length} />,
           },
           {
-            label: "Bundled",
+            label: "内置",
             value: "bundled",
             rightSlot: <CountBadge count={bundledPlugins.length} />,
           },
@@ -98,7 +98,7 @@ export function SettingsPlugins({ defaultSubtab }: SettingsPluginsProps) {
                       setDirectory(null);
                     }}
                   >
-                    Add Plugin
+                    添加插件
                   </Button>
                 )}
                 <IconButton
@@ -214,7 +214,7 @@ function PluginTableRow({
         <TableCell className="!py-0">
           <Checkbox
             hideLabel
-            title={plugin?.enabled ? "Disable plugin" : "Enable plugin"}
+            title={plugin?.enabled ? "禁用" : "启用"}
             checked={plugin?.enabled ?? false}
             disabled={plugin == null}
             onChange={async (enabled) => {
@@ -260,7 +260,7 @@ function PluginTableRow({
               isLoading={installPluginMutation.isPending}
               onClick={() => installPluginMutation.mutate(name)}
             >
-              Update
+              更新
             </Button>
           ) : plugin == null ? (
             <Button
@@ -271,7 +271,7 @@ function PluginTableRow({
               isLoading={installPluginMutation.isPending}
               onClick={() => installPluginMutation.mutate(name)}
             >
-              Install
+              安装
             </Button>
           ) : null}
           {showUninstall && uninstall != null && (
@@ -282,7 +282,7 @@ function PluginTableRow({
               isLoading={uninstall.isPending}
               onClick={() => uninstall.mutate()}
             >
-              Uninstall
+              卸载
             </Button>
           )}
         </HStack>
@@ -316,14 +316,14 @@ function PluginSearch() {
             <LoadingIcon size="xl" className="text-text-subtlest" />
           </EmptyStateText>
         ) : (results.data.plugins ?? []).length === 0 ? (
-          <EmptyStateText>No plugins found</EmptyStateText>
+          <EmptyStateText>未找到插件</EmptyStateText>
         ) : (
           <Table scrollable>
             <TableHead>
               <TableRow>
-                <TableHeaderCell>Display Name</TableHeaderCell>
-                <TableHeaderCell>Name</TableHeaderCell>
-                <TableHeaderCell>Version</TableHeaderCell>
+                <TableHeaderCell>显示名称</TableHeaderCell>
+                <TableHeaderCell>标识名称</TableHeaderCell>
+                <TableHeaderCell>版本</TableHeaderCell>
                 <TableHeaderCell />
               </TableRow>
             </TableHead>
@@ -343,9 +343,7 @@ function InstalledPlugins({ plugins, className }: { plugins: Plugin[]; className
   return plugins.length === 0 ? (
     <div className={classNames(className, "pb-4")}>
       <EmptyStateText className="text-center">
-        Plugins extend the functionality of Yaak.
-        <br />
-        Add your first plugin to get started.
+        插件可扩展 Yaak 的功能。 添加首个插件开始使用吧。
       </EmptyStateText>
     </div>
   ) : (
@@ -353,9 +351,9 @@ function InstalledPlugins({ plugins, className }: { plugins: Plugin[]; className
       <TableHead>
         <TableRow>
           <TableHeaderCell className="w-0" />
-          <TableHeaderCell>Display Name</TableHeaderCell>
-          <TableHeaderCell>Name</TableHeaderCell>
-          <TableHeaderCell>Version</TableHeaderCell>
+          <TableHeaderCell>显示名称</TableHeaderCell>
+          <TableHeaderCell>标识名称</TableHeaderCell>
+          <TableHeaderCell>版本</TableHeaderCell>
           <TableHeaderCell />
         </TableRow>
       </TableHead>
@@ -378,9 +376,9 @@ function BundledPlugins({ plugins }: { plugins: Plugin[] }) {
       <TableHead>
         <TableRow>
           <TableHeaderCell className="w-0" />
-          <TableHeaderCell>Display Name</TableHeaderCell>
-          <TableHeaderCell>Name</TableHeaderCell>
-          <TableHeaderCell>Version</TableHeaderCell>
+          <TableHeaderCell>显示名称</TableHeaderCell>
+          <TableHeaderCell>标识名称</TableHeaderCell>
+          <TableHeaderCell>版本</TableHeaderCell>
           <TableHeaderCell />
         </TableRow>
       </TableHead>

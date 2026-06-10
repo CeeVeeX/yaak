@@ -62,7 +62,7 @@ export function KeyValueRow({
         text={textToCopy}
         className="text-text-subtle"
         size="2xs"
-        title={`Copy ${label}`}
+        title={`复制 ${label}`}
         iconSize="sm"
       />
     ) : null);

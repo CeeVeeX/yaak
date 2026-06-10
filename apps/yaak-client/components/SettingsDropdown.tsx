@@ -1,5 +1,4 @@
-import { openUrl } from "@tauri-apps/plugin-opener";
-import { useLicense } from "@yaakapp-internal/license";
+// import { openUrl } from "@tauri-apps/plugin-opener";
 import { useRef } from "react";
 import { openSettings } from "../commands/openSettings";
 import { useCheckForUpdates } from "../hooks/useCheckForUpdates";
@@ -17,7 +16,7 @@ export function SettingsDropdown() {
   const exportData = useExportData();
   const dropdownRef = useRef<DropdownRef>(null);
   const checkForUpdates = useCheckForUpdates();
-  const { check } = useLicense();
+  // const { check } = useLicense();
 
   return (
     <Dropdown

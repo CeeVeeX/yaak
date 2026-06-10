@@ -42,6 +42,17 @@ const tabs = [
   TAB_PROXY,
   TAB_LICENSE,
 ] as const;
+const i18n = {
+  [TAB_GENERAL]: "常规",
+  [TAB_THEME]: "主题",
+  [TAB_INTERFACE]: "界面",
+  [TAB_SHORTCUTS]: "快捷键",
+  [TAB_PLUGINS]: "插件",
+  [TAB_CERTIFICATES]: "证书",
+  [TAB_PROXY]: "代理",
+  [TAB_LICENSE]: "许可",
+};
+
 export type SettingsTab = (typeof tabs)[number];
 
 export default function Settings({ hide }: Props) {
@@ -94,11 +105,11 @@ export default function Settings({ hide }: Props) {
         defaultValue={mainTab || tabFromQuery}
         addBorders
         tabListClassName="min-w-[10rem] bg-surface x-theme-sidebar border-r border-border pl-3"
-        label="Settings"
+        label="设置"
         tabs={tabs.map(
           (value): TabItem => ({
             value,
-            label: capitalize(value),
+            label: capitalize(i18n[value]),
             hidden: !appInfo.featureLicense && value === TAB_LICENSE,
             leftSlot:
               value === TAB_GENERAL ? (

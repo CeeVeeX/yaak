@@ -86,7 +86,7 @@ export function JsonBodyEditor({ forceUpdateKey, heightMode, request }: Props) {
           items={
             [
               {
-                label: "Automatically Fix JSON",
+                label: "自动修复JSON",
                 keepOpenOnSelect: true,
                 onSelect: handleToggleAutoFix,
                 rightSlot: <IconTooltip content={stripMessage} />,

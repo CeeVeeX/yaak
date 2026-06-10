@@ -83,27 +83,27 @@ export function HttpResponsePane({ style, className, activeRequestId }: Props) {
     () => [
       {
         value: TAB_BODY,
-        label: "Response",
+        label: "响应",
         options: {
           value: viewMode,
           onChange: setViewMode,
           items: [
-            { label: "Response", value: "pretty" },
+            { label: "响应", value: "pretty" },
             ...(mimeType?.startsWith("image")
               ? []
-              : [{ label: "Response (Raw)", shortLabel: "Raw", value: "raw" }]),
+              : [{ label: "响应 (原始)", shortLabel: "响应", value: "raw" }]),
           ],
         },
       },
       {
         value: TAB_REQUEST,
-        label: "Request",
+        label: "请求",
         rightSlot:
           (activeResponse?.requestContentLength ?? 0) > 0 ? <CountBadge count={true} /> : null,
       },
       {
         value: TAB_HEADERS,
-        label: "Headers",
+        label: "标头",
         rightSlot: (
           <CountBadge
             count={activeResponse?.requestHeaders.length ?? 0}
@@ -127,8 +127,8 @@ export function HttpResponsePane({ style, className, activeRequestId }: Props) {
           value: timelineViewMode,
           onChange: (v) => setTimelineViewMode((v as TimelineViewMode) ?? "timeline"),
           items: [
-            { label: "Timeline", value: "timeline" },
-            { label: "Timeline (Text)", shortLabel: "Timeline", value: "text" },
+            { label: "时间线", value: "timeline" },
+            { label: "时间线 (文本)", shortLabel: "时间线", value: "text" },
           ],
         },
       },
@@ -280,7 +280,7 @@ export function HttpResponsePane({ style, className, activeRequestId }: Props) {
                         </EmptyStateText>
                       ) : activeResponse.state === "closed" &&
                         (activeResponse.contentLength ?? 0) === 0 ? (
-                        <EmptyStateText>Empty</EmptyStateText>
+                        <EmptyStateText>空</EmptyStateText>
                       ) : mimeType?.match(/^text\/event-stream/i) && viewMode === "pretty" ? (
                         <EventStreamViewer response={activeResponse} />
                       ) : mimeType?.match(/^image\/svg/) ? (

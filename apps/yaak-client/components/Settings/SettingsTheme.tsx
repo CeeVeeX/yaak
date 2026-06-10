@@ -74,32 +74,32 @@ export function SettingsTheme() {
   return (
     <VStack space={1.5} className="mb-4">
       <div className="mb-3">
-        <Heading>Theme</Heading>
+        <Heading>主题</Heading>
         <p className="text-text-subtle">
-          Make Yaak your own by selecting a theme, or{" "}
+          选择主题自定义应用外观，或{" "}
           <Link href="https://yaak.app/docs/plugin-development/plugins-quick-start">
-            Create Your Own
+            创建自定义主题
           </Link>
         </p>
       </div>
       <SettingsList className="space-y-8">
-        <SettingsSection title="Theme">
+        <SettingsSection title="主题">
           <ModelSettingRowSelect
             model={settings}
             modelKey="appearance"
-            title="Appearance"
-            description="Choose whether Yaak follows your system appearance or uses a fixed mode."
+            title="外观模式"
+            description="选择跟随系统外观或使用固定模式。"
             options={[
-              { label: "Automatic", value: "system" },
-              { label: "Light", value: "light" },
-              { label: "Dark", value: "dark" },
+              { label: "自动", value: "system" },
+              { label: "浅色", value: "light" },
+              { label: "深色", value: "dark" },
             ]}
           />
           {(settings.appearance === "system" || settings.appearance === "light") && (
             <SettingRowSelect
               name="lightTheme"
-              title="Light theme"
-              description="Theme used when Yaak is in light mode."
+              title="浅色主题"
+              description="浅色模式下使用的主题。"
               value={activeTheme.data.light.id}
               options={lightThemes}
               onChange={(themeLight) => patchModel(settings, { themeLight })}
@@ -108,8 +108,8 @@ export function SettingsTheme() {
           {(settings.appearance === "system" || settings.appearance === "dark") && (
             <SettingRowSelect
               name="darkTheme"
-              title="Dark theme"
-              description="Theme used when Yaak is in dark mode."
+              title="深色主题"
+              description="深色模式下使用的主题。"
               value={activeTheme.data.dark.id}
               options={darkThemes}
               onChange={(themeDark) => patchModel(settings, { themeDark })}
@@ -117,7 +117,7 @@ export function SettingsTheme() {
           )}
         </SettingsSection>
 
-        <SettingsSection title="Preview">
+        <SettingsSection title="预览">
           <VStack
             space={3}
             className="mt-4 w-full bg-surface p-3 border border-dashed border-border-subtle rounded overflow-x-auto"
@@ -125,7 +125,7 @@ export function SettingsTheme() {
             <HStack className="text" space={1.5}>
               <Icon icon={appearance === "dark" ? "moon" : "sun"} />
               <strong>{activeTheme.data.active.label}</strong>
-              <em>(preview)</em>
+              <em>(预览)</em>
             </HStack>
             <HStack space={1.5} className="w-full">
               {buttonColors.map((c, i) => (
@@ -155,7 +155,7 @@ export function SettingsTheme() {
             <Suspense>
               <Editor
                 defaultValue={[
-                  "let foo = { // Demo code editor",
+                  "let foo = { // 代码编辑器演示",
                   '  foo: ("bar" || "baz" ?? \'qux\'),',
                   "  baz: [1, 10.2, null, false, true],",
                   "};",

@@ -121,7 +121,7 @@ export function ResponseCookies({ response }: Props) {
         storageKey={`${response.requestId}.sent_cookies`}
         summary={
           <h2 className="flex items-center">
-            Sent Cookies <CountBadge showZero count={sentCookies.length} />
+            已发送 Cookie <CountBadge showZero count={sentCookies.length} />
           </h2>
         }
       >
@@ -144,7 +144,7 @@ export function ResponseCookies({ response }: Props) {
         storageKey={`${response.requestId}.received_cookies`}
         summary={
           <h2 className="flex items-center">
-            Received Cookies <CountBadge showZero count={receivedCookies.length} />
+            已接收 Cookie <CountBadge showZero count={receivedCookies.length} />
           </h2>
         }
       >
@@ -221,5 +221,5 @@ export function ResponseCookies({ response }: Props) {
 }
 
 function NoCookies() {
-  return <span className="text-text-subtlest text-sm italic">No Cookies</span>;
+  return <span className="text-text-subtlest text-sm italic">无 Cookie</span>;
 }

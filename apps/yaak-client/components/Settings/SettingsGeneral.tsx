@@ -39,31 +39,28 @@ export function SettingsGeneral() {
   return (
     <VStack space={1.5} className="mb-4">
       <div className="mb-4">
-        <Heading>General</Heading>
-        <p className="text-text-subtle">Configure general settings for update behavior and more.</p>
+        <Heading>常规</Heading>
+        <p className="text-text-subtle">配置更新行为及其他通用设置。</p>
       </div>
       <SettingsList className="space-y-8">
         <CargoFeature feature="updater">
-          <SettingsSection title="Updates">
-            <SettingRow
-              title="Update Channel"
-              description="Choose whether Yaak should use stable releases or beta releases."
-            >
+          <SettingsSection title="更新">
+            <SettingRow title="更新通道" description="选择使用稳定版或测试版更新。">
               <div className="grid grid-cols-[12rem_auto] gap-1">
                 <ModelSettingSelectControl
                   model={settings}
                   modelKey="updateChannel"
-                  label="Update Channel"
+                  label="更新通道"
                   selectClassName="!w-full"
                   options={[
-                    { label: "Stable", value: "stable" },
-                    { label: "Beta", value: "beta" },
+                    { label: "稳定版", value: "stable" },
+                    { label: "测试版", value: "beta" },
                   ]}
                 />
                 <IconButton
                   variant="border"
                   size="sm"
-                  title="Check for updates"
+                  title="检查更新"
                   icon="refresh"
                   spin={checkForUpdates.isPending}
                   onClick={() => checkForUpdates.mutateAsync()}
@@ -72,35 +69,35 @@ export function SettingsGeneral() {
             </SettingRow>
 
             <SettingRowSelect
-              title="Update Behavior"
-              description="Choose whether updates are installed automatically or manually."
+              title="更新方式"
+              description="选择自动安装或手动安装更新。"
               name="autoupdate"
               value={settings.autoupdate ? "auto" : "manual"}
               onChange={(v) => patchModel(settings, { autoupdate: v === "auto" })}
               options={[
-                { label: "Automatic", value: "auto" },
-                { label: "Manual", value: "manual" },
+                { label: "自动", value: "auto" },
+                { label: "手动", value: "manual" },
               ]}
             />
 
             <ModelSettingRowBoolean
               model={settings}
               modelKey="autoDownloadUpdates"
-              title="Automatically download updates"
-              description="Download Yaak updates in the background so they are ready to install."
+              title="自动下载更新"
+              description="在后台下载更新，以便随时安装。"
               disabled={!settings.autoupdate}
             />
 
             <ModelSettingRowBoolean
               model={settings}
               modelKey="checkNotifications"
-              title="Check for notifications"
-              description="Periodically ping Yaak servers to check for relevant notifications."
+              title="检查通知"
+              description="定期连接服务器检查相关通知。"
             />
 
             <SettingRowBoolean
-              title="Send anonymous usage statistics"
-              description="Yaak is local-first and does not collect analytics or usage data."
+              title="发送匿名使用统计"
+              description="本软件优先本地运行，不会收集分析数据或使用信息。"
               disabled
               checked={false}
               onChange={() => {}}
@@ -111,7 +108,7 @@ export function SettingsGeneral() {
         <SettingsSection
           title={
             <>
-              Workspace{" "}
+              工作区{" "}
               <span className="inline-block bg-surface-highlight px-2 py-0.5 rounded text">
                 {workspace.name}
               </span>
@@ -157,13 +154,13 @@ export function SettingsGeneral() {
           />
         </SettingsSection>
 
-        <SettingsSection title="App Info">
-          <SettingRow title="Version" description="Current Yaak version.">
+        <SettingsSection title="应用信息">
+          <SettingRow title="版本" description="当前软件版本。">
             <SettingValue value={appInfo.version} />
           </SettingRow>
           <SettingRow
-            title="Data Directory"
-            description="Where Yaak stores application data."
+            title="数据目录"
+            description="应用数据的存储位置。"
             controlClassName="min-w-0 max-w-[min(42rem,55vw)] gap-2"
           >
             <SettingValue
@@ -178,8 +175,8 @@ export function SettingsGeneral() {
             />
           </SettingRow>
           <SettingRow
-            title="Logs Directory"
-            description="Where Yaak writes application logs."
+            title="日志目录"
+            description="应用日志的写入位置。"
             controlClassName="min-w-0 max-w-[min(42rem,55vw)] gap-2"
           >
             <SettingValue

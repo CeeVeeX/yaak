@@ -27,9 +27,9 @@ export function ResponseHeaders({ response }: Props) {
   );
   return (
     <div className="overflow-auto h-full pb-4 gap-y-3 flex flex-col pr-0.5">
-      <DetailsBanner storageKey={`${response.requestId}.general`} summary={<h2>Info</h2>}>
+      <DetailsBanner storageKey={`${response.requestId}.general`} summary={<h2>信息</h2>}>
         <KeyValueRows>
-          <KeyValueRow labelColor="secondary" label="Request URL">
+          <KeyValueRow labelColor="secondary" label="请求 URL">
             <div className="flex items-center gap-1">
               <span className="select-text cursor-text">{response.url}</span>
               <IconButton
@@ -41,10 +41,10 @@ export function ResponseHeaders({ response }: Props) {
               />
             </div>
           </KeyValueRow>
-          <KeyValueRow labelColor="secondary" label="Remote Address">
+          <KeyValueRow labelColor="secondary" label="远程地址">
             {response.remoteAddr ?? <span className="text-text-subtlest">--</span>}
           </KeyValueRow>
-          <KeyValueRow labelColor="secondary" label="Version">
+          <KeyValueRow labelColor="secondary" label="版本">
             {response.version ?? <span className="text-text-subtlest">--</span>}
           </KeyValueRow>
         </KeyValueRows>
@@ -53,7 +53,7 @@ export function ResponseHeaders({ response }: Props) {
         storageKey={`${response.requestId}.request_headers`}
         summary={
           <h2 className="flex items-center">
-            Request Headers <CountBadge showZero count={requestHeaders.length} />
+            请求头 <CountBadge showZero count={requestHeaders.length} />
           </h2>
         }
       >
@@ -75,7 +75,7 @@ export function ResponseHeaders({ response }: Props) {
         storageKey={`${response.requestId}.response_headers`}
         summary={
           <h2 className="flex items-center">
-            Response Headers <CountBadge showZero count={responseHeaders.length} />
+            响应头 <CountBadge showZero count={responseHeaders.length} />
           </h2>
         }
       >
@@ -97,5 +97,5 @@ export function ResponseHeaders({ response }: Props) {
 }
 
 function NoHeaders() {
-  return <span className="text-text-subtlest text-sm italic">No Headers</span>;
+  return <span className="text-text-subtlest text-sm italic">无标头</span>;
 }
