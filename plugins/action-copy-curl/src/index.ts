@@ -5,7 +5,7 @@ const NEWLINE = "\\\n ";
 export const plugin: PluginDefinition = {
   httpRequestActions: [
     {
-      label: "Copy as Curl",
+      label: "复制为 Curl",
       icon: "copy",
       async onSelect(ctx, args) {
         const rendered_request = await ctx.httpRequest.render({

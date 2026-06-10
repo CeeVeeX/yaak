@@ -32,7 +32,7 @@ export function BranchSelectionDialog({ branches, onCancel, onSelect, selectText
       />
       <HStack space={2} justifyContent="end">
         <Button onClick={onCancel} variant="border" color="secondary">
-          Cancel
+          取消
         </Button>
         <Button type="submit" color="primary">
           {selectText}

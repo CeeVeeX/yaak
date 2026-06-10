@@ -212,17 +212,11 @@ export function GrpcRequestPane({
             <>
               {isStreaming && (
                 <>
+                  <IconButton variant="border" size="sm" title="取消" onClick={onCancel} icon="x" />
                   <IconButton
                     variant="border"
                     size="sm"
-                    title="Cancel"
-                    onClick={onCancel}
-                    icon="x"
-                  />
-                  <IconButton
-                    variant="border"
-                    size="sm"
-                    title="Commit"
+                    title="提交"
                     onClick={onCommit}
                     icon="check"
                   />

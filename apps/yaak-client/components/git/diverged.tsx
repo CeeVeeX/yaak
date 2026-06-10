@@ -68,7 +68,7 @@ function DivergedDialog({ remote, branch, onResult, onHide }: DivergedDialogProp
           {selected != null ? resolutionLabel[selected] : "Select an option"}
         </Button>
         <Button variant="border" onClick={handleCancel}>
-          Cancel
+          取消
         </Button>
       </HStack>
     </div>

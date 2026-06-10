@@ -99,7 +99,7 @@ function ExportDataDialogContent({
                 />
               </th>
               <th className="py-2 text-left pl-4" onClick={handleToggleAll}>
-                Workspace
+                工作区
               </th>
             </tr>
           </thead>
@@ -140,12 +140,12 @@ function ExportDataDialogContent({
       <footer className="px-5 grid grid-cols-[1fr_auto] items-center bg-surface-highlight py-2 border-t border-border-subtle">
         <div>
           <Link href="https://yaak.app/button/new" noUnderline className="text-text-subtle">
-            Create Run Button
+            创建运行按钮
           </Link>
         </div>
         <HStack space={2} justifyContent="end">
           <Button size="sm" className="focus" variant="border" onClick={onHide}>
-            Cancel
+            取消
           </Button>
           <Button
             size="sm"
@@ -155,7 +155,7 @@ function ExportDataDialogContent({
             disabled={noneSelected}
             onClick={() => handleExport()}
           >
-            Export{" "}
+            导出{" "}
             {pluralizeCount("Workspace", numSelected, { omitSingle: true, noneWord: "Nothing" })}
           </Button>
         </HStack>

@@ -224,9 +224,9 @@ export const plugin: PluginDefinition = {
         // Show dialog with language/library selectors and code preview
         const result = await ctx.prompt.form({
           id: "httpsnippet",
-          title: "Generate Code Snippet",
-          confirmText: "Copy to Clipboard",
-          cancelText: "Cancel",
+          title: "生成代码片段",
+          confirmText: "复制到剪贴板",
+          cancelText: "取消",
           size: "md",
           inputs: [
             {
@@ -235,7 +235,7 @@ export const plugin: PluginDefinition = {
                 {
                   type: "select",
                   name: "target",
-                  label: "Language",
+                  label: "语言",
                   defaultValue: initialTarget,
                   options: languageOptions,
                 },
@@ -260,7 +260,7 @@ export const plugin: PluginDefinition = {
             {
               type: "editor",
               name: "code",
-              label: "Preview",
+              label: "预览",
               language: getEditorLanguage(initialTarget),
               defaultValue: initialCode,
               readOnly: true,

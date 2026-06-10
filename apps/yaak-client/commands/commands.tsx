@@ -35,10 +35,10 @@ export const createFolder = createFastMutation<
     if (!patch.name) {
       const name = await showPrompt({
         id: "new-folder",
-        label: "Name",
-        defaultValue: "Folder",
-        title: "New Folder",
-        confirmText: "Create",
+        label: "名称",
+        defaultValue: "文件夹",
+        title: "新文件夹",
+        confirmText: "创建",
         placeholder: "Name",
       });
       if (name == null) return null;
@@ -157,10 +157,10 @@ export const syncWorkspace = createFastMutation<
           </Table>
           <footer className="py-3 flex flex-row-reverse items-center gap-3">
             <Button type="submit" color="primary">
-              Apply Changes
+              应用更改
             </Button>
             <Button onClick={hide} color="secondary">
-              Cancel
+              取消
             </Button>
           </footer>
         </form>

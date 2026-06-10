@@ -63,10 +63,10 @@ export function Confirm({
       )}
       <HStack space={2} justifyContent="start" className="mt-2 mb-4 flex-row-reverse">
         <Button type="submit" color={color} disabled={!didConfirm}>
-          {confirmText ?? "Confirm"}
+          {confirmText ?? "确认"}
         </Button>
         <Button onClick={handleHide} variant="border">
-          Cancel
+          取消
         </Button>
       </HStack>
     </form>

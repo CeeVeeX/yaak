@@ -354,10 +354,10 @@ function RecordHotkeyDialog({ label, onSave, onCancel }: RecordHotkeyDialogProps
       </div>
       <HStack space={2} justifyContent="end">
         <Button color="secondary" onClick={onCancel}>
-          Cancel
+          取消
         </Button>
         <Button color="primary" onClick={handleSave} disabled={!recordedKey}>
-          Save
+          保存
         </Button>
       </HStack>
     </VStack>

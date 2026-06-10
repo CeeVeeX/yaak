@@ -63,16 +63,16 @@ export const WorkspaceActionsDropdown = memo(function WorkspaceActionsDropdown({
 
     const itemsBefore: DropdownItem[] = [
       {
-        label: "New Workspace",
+        label: "新工作区",
         leftSlot: <Icon icon="plus" />,
         submenu: [
           {
-            label: "Create Empty",
+            label: "创建空工作区",
             leftSlot: <Icon icon="plus_circle" />,
             onSelect: createWorkspace,
           },
           {
-            label: "Open Folder",
+            label: "打开文件夹",
             leftSlot: <Icon icon="folder_open" />,
             onSelect: async () => {
               const dir = await open({
@@ -86,7 +86,7 @@ export const WorkspaceActionsDropdown = memo(function WorkspaceActionsDropdown({
             },
           },
           {
-            label: "Clone Git Repository",
+            label: "克隆 Git 仓库",
             leftSlot: <Icon icon="hard_drive_download" />,
             onSelect: openCloneGitRepositoryDialog,
           },
@@ -103,7 +103,7 @@ export const WorkspaceActionsDropdown = memo(function WorkspaceActionsDropdown({
       })),
       ...(workspaceActions.length > 0 ? [{ type: "separator" as const }] : []),
       {
-        label: "Workspace Settings",
+        label: "工作区设置",
         leftSlot: <Icon icon="settings" />,
         hotKeyAction: "workspace_settings.show",
         onSelect: openWorkspaceSettings,
@@ -118,7 +118,7 @@ export const WorkspaceActionsDropdown = memo(function WorkspaceActionsDropdown({
         },
       },
       {
-        label: "Clear Send History",
+        label: "清除发送历史记录",
         color: "warning",
         leftSlot: <Icon icon="history" />,
         onSelect: deleteSendHistory,
@@ -159,7 +159,7 @@ export const WorkspaceActionsDropdown = memo(function WorkspaceActionsDropdown({
     showDialog({
       id: "switch-workspace",
       size: "sm",
-      title: "Switch Workspace",
+      title: "切换工作区",
       render: ({ hide }) => <SwitchWorkspaceDialog workspace={workspace} hide={hide} />,
     });
   }, []);

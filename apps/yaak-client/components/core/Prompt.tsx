@@ -20,8 +20,8 @@ export function Prompt({
   onCancel,
   inputs: initialInputs,
   onResult,
-  confirmText = "Confirm",
-  cancelText = "Cancel",
+  confirmText = "确认",
+  cancelText = "取消",
   onValuesChange,
   onInputsUpdated,
 }: PromptProps) {
@@ -55,10 +55,10 @@ export function Prompt({
       <DynamicForm inputs={inputs} onChange={setValue} data={value} stateKey={id} />
       <HStack space={2} justifyContent="end">
         <Button onClick={onCancel} variant="border" color="secondary">
-          {cancelText || "Cancel"}
+          {cancelText || "取消"}
         </Button>
         <Button type="submit" color="primary">
-          {confirmText || "Done"}
+          {confirmText || "完成"}
         </Button>
       </HStack>
     </form>

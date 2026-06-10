@@ -34,12 +34,12 @@ export function useGrpc(
 
   const cancel = useMutation({
     mutationKey: ["grpc_cancel", conn?.id ?? "n/a"],
-    mutationFn: () => emit(`grpc_client_msg_${conn?.id ?? "none"}`, "Cancel"),
+    mutationFn: () => emit(`grpc_client_msg_${conn?.id ?? "none"}`, "取消"),
   });
 
   const commit = useMutation({
     mutationKey: ["grpc_commit", conn?.id ?? "n/a"],
-    mutationFn: () => emit(`grpc_client_msg_${conn?.id ?? "none"}`, "Commit"),
+    mutationFn: () => emit(`grpc_client_msg_${conn?.id ?? "none"}`, "提交"),
   });
 
   const debouncedUrl = useDebouncedValue<string>(req?.url ?? "", 1000);

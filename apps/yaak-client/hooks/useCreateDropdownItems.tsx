@@ -104,7 +104,7 @@ export function getCreateDropdownItems({
       : [
           { type: "separator" },
           {
-            label: "Folder",
+            label: "文件夹",
             leftSlot: hideIcons ? undefined : <Icon icon="plus" />,
             onSelect: async () => {
               const id = await createFolder.mutateAsync({ folderId });

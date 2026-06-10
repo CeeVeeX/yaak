@@ -271,10 +271,10 @@ export function HttpResponsePane({ style, className, activeRequestId }: Props) {
                           <VStack space={3}>
                             <HStack space={3}>
                               <LoadingIcon className="text-text-subtlest" />
-                              Sending Request
+                              正在发送请求
                             </HStack>
                             <Button size="sm" variant="border" onClick={() => cancel.mutate()}>
-                              Cancel
+                              取消
                             </Button>
                           </VStack>
                         </EmptyStateText>
